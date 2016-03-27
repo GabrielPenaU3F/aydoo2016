@@ -21,7 +21,7 @@ public class Formateador {
 	        }
 		}
 		return "";
-	}
+	} 
 	
 	public static String formatearPretty(String numero) {
 		int number = Integer.parseInt(numero);
