@@ -20,7 +20,7 @@ public class FormateadorTest {
 		entrada[0] = "360";
 		entrada[1] = "--format=quiet";
 		String numeroQuiet = Formateador.formatear(entrada);
-		String numeroFormateado = String.format("2/n2/n2/n3/n3/n5/n");
+		String numeroFormateado = String.format("2\n2\n2\n3\n3\n5\n");
 		Assert.assertEquals(0, numeroFormateado.compareTo(numeroQuiet));
 	}
 	

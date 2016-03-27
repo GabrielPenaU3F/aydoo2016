@@ -40,7 +40,7 @@ public class Formateador {
 		Factorizador.factorizar(number);
 		List<Integer> factores = Factorizador.getFactores();
 		for(int i=0; i < factores.size(); i++) {
-			mensaje = mensaje.concat(factores.get(i) + "/n");
+			mensaje = mensaje.concat(factores.get(i) + "\n");
 		}
 		String mensajeFormateado = String.format(mensaje);
 		return mensajeFormateado;
