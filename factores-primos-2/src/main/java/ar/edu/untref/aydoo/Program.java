@@ -5,10 +5,9 @@ import java.util.Scanner;
 
 public class Program 
 {
-    public static final void main(String arg[])
+    public static final void main(String args[])
     {
-    	Scanner scanner = new Scanner(System.in);
-    	int numero = scanner.nextInt();
+    	int numero = Integer.parseInt(args[0]);
         Factorizador.factorizar(numero);
         List<Integer> factores = Factorizador.getFactores();
         System.out.print(numero + ": ");
