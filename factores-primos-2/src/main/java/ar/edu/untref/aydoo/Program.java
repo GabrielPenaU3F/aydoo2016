@@ -11,9 +11,9 @@ public class Program
         String quiet = "--format=quiet";
         if (args[1].compareToIgnoreCase(pretty) == 0) {
         	System.out.print(Formateador.formatearPretty(args[0]));
-        }/* else if (args[1].compareToIgnoreCase(quiet) == 0) {
+        } else if (args[1].compareToIgnoreCase(quiet) == 0) {
         	System.out.print(Formateador.formatearQuiet(args[0]));
-        } */else {
+        } else {
         	System.out.println("Formato no aceptado. Las opciones posibles son: pretty o quiet.");
         }
 
