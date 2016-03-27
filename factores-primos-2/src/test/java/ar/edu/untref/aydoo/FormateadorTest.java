@@ -7,15 +7,16 @@ public class FormateadorTest {
 	
 	@Test
 	public void queFormateeCorrectamenteEl360EnPretty() {
-		String numeroPretty = Formateador.formatearPretty("360");
+		String numeroPretty = Formateador.formatear("360", "--format=pretty");
 		Assert.assertEquals(0, numeroPretty.compareTo("360: 2 2 2 3 3 5"));
 	}
 	
 	@Test
 	public void queFormateeCorrectamenteEl360EnQuiet() {
-		String numeroQuiet = Formateador.formatearQuiet("360");
+		String numeroQuiet = Formateador.formatear("360", "--format=quiet");
 		String numeroFormateado = String.format("2/n2/n2/n3/n3/n5/n");
 		Assert.assertEquals(0, numeroFormateado.compareTo(numeroQuiet));
 	}
+	
 
 }
