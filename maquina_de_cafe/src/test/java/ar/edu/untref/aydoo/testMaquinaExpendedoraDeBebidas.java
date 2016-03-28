@@ -21,4 +21,12 @@ public class testMaquinaExpendedoraDeBebidas {
 		Assert.assertTrue(vaso.contenido.contains("Leche"));
 	}
 
+	@Test
+	public void queHagaTeConLecheCon4DeAzucar() {
+		Vaso vaso = this.expendedora.hacerTeConLecheConNDeAzucar(4);
+		Assert.assertEquals(4, vaso.azucar);
+		Assert.assertTrue(vaso.contenido.contains("Te"));
+		Assert.assertTrue(vaso.contenido.contains("Leche"));
+	}
+	
 }
