@@ -29,4 +29,6 @@ public class testMaquinaExpendedoraDeBebidas {
 		Assert.assertTrue(vaso.contenido.contains("Leche"));
 	}
 	
+	
+	
 }
