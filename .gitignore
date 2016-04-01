@@ -5,6 +5,7 @@ target
 .classpath
 .DS_Store
 .project
+.recommenders
 gitpush.sh
 
 # Mobile Tools for Java (J2ME)
