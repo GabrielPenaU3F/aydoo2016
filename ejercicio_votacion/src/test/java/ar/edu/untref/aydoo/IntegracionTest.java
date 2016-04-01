@@ -24,7 +24,7 @@ public class IntegracionTest {
 	public void quePuedaVerElVoto() {
 		this.mesa.votar("Massa");
 		Voto votoMassa = new Voto("Massa");
-		Assert.assertTrue(votoMassa.equals(this.mesa.getVoto()));
+		Assert.assertTrue(votoMassa.equals(this.mesa.getUltimoVoto()));
 	}
 	
 	@Test
@@ -33,6 +33,14 @@ public class IntegracionTest {
 		int exitoMassa = this.mesa.votar("Massa");
 		Assert.assertEquals(1, exitoMacri);
 		Assert.assertEquals(1, exitoMassa);
+	}
+	
+	@Test
+	public void quePuedaVerLosVotosDeMacriYMassa() {
+		this.mesa.votar("Macri");
+		this.mesa.votar("Massa");
+		Assert.assertTrue(mesa.listarVotosComoString().contains("Macri"));
+		Assert.assertTrue(mesa.listarVotosComoString().contains("Massa"));
 	}
 
 }

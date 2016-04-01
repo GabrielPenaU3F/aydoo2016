@@ -20,12 +20,12 @@ public class Voto {
 	}
 
 
-	private String getNombrePartido() {
+	public String getNombrePartido() {
 		return this.nombrePartido;
 	}
 
 
-	private String getNombreCandidato() {
+	public String getNombreCandidato() {
 		return this.nombreCandidato;
 	}
 	
