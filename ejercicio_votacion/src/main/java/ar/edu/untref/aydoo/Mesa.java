@@ -12,8 +12,8 @@ public class Mesa {
 		this.votos = new LinkedList<Voto>();
 	}
 
-	public int votar(String nombreCandidato) {
-		Voto voto = new Voto(nombreCandidato);
+	public int votar(String nombreCandidato, String nombrePartido) {
+		Voto voto = new Voto(nombreCandidato, nombrePartido);
 		this.votos.add(voto);
 		return 1;
 	}

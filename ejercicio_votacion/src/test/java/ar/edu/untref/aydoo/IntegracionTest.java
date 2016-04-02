@@ -16,29 +16,29 @@ public class IntegracionTest {
 
 	@Test
 	public void quePuedaVotarAMassa() {
-		int exito = this.mesa.votar("Massa");
+		int exito = this.mesa.votar("Massa", "Frente Renovador");
 		Assert.assertEquals(1, exito);
 	}
 
 	@Test
 	public void quePuedaVerElVoto() {
-		this.mesa.votar("Massa");
-		Voto votoMassa = new Voto("Massa");
+		this.mesa.votar("Massa", "Frente Renovador");
+		Voto votoMassa = new Voto("Massa", "Frente Renovador");
 		Assert.assertTrue(votoMassa.equals(this.mesa.getUltimoVoto()));
 	}
 	
 	@Test
 	public void quePuedaVotarAMacriYAMassa() {
-		int exitoMacri = this.mesa.votar("Macri");
-		int exitoMassa = this.mesa.votar("Massa");
+		int exitoMacri = this.mesa.votar("Macri", "Pro");
+		int exitoMassa = this.mesa.votar("Massa", "Frente Renovador");
 		Assert.assertEquals(1, exitoMacri);
 		Assert.assertEquals(1, exitoMassa);
 	}
 	
 	@Test
 	public void quePuedaVerLosVotosDeMacriYMassa() {
-		this.mesa.votar("Macri");
-		this.mesa.votar("Massa");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Massa", "Frente Renovador");
 		Assert.assertTrue(mesa.listarVotosComoString().contains("Macri"));
 		Assert.assertTrue(mesa.listarVotosComoString().contains("Massa"));
 	}

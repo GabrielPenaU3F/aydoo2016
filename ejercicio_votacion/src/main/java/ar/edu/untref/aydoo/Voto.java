@@ -6,8 +6,9 @@ public class Voto {
 	private String nombrePartido;
 
 
-	public Voto(String nombreCandidato) {
+	public Voto(String nombreCandidato, String nombrePartido) {
 		this.nombreCandidato = nombreCandidato;
+		this.nombrePartido = nombrePartido;
 	}
 
 
