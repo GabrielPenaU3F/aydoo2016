@@ -43,6 +43,14 @@ public class Partido {
 	public List<Candidato> getCandidatos() {
 		return this.candidatos;
 	}
+
+
+	@Override
+	public boolean equals(Object obj) { //Dos partidos son iguales si tienen mismo nombre
+		Partido otroPartido = (Partido) obj;
+		if(otroPartido.getNombre() != this.getNombre()) return false;
+		return true;
+	}
 	
 
 }

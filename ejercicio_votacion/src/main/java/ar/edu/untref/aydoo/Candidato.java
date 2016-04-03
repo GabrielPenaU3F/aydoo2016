@@ -22,7 +22,7 @@ public class Candidato {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj) { //Dos candidatos son iguales si tienen mismo nombre y partido
 		Candidato otro = (Candidato) obj;
 		if((otro.getNombre() == this.getNombre()) && (otro.getPartido().equals(this.getPartido()))) {
 			return true;
