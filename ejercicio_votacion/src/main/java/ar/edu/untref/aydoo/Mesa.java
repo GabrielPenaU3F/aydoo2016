@@ -58,5 +58,32 @@ public class Mesa {
 		this.partidos.add(partido);
 	}
 
+	public String obtenerCandidatoConMasVotos() {
+		Candidato candidatoConMasVotos = new Candidato("-");
+		this.computarVotosHastaElMomento();
+		Iterator<Partido> iteradorPartidos = this.partidos.iterator();
+		while(iteradorPartidos.hasNext()) {
+			Partido partidoActual = iteradorPartidos.next();
+			Iterator<Candidato> iteradorCandidatos = partidoActual.getCandidatos().iterator();
+			Candidato candidatoActual = iteradorCandidatos.next();
+			if(candidatoActual.getVotos() > candidatoConMasVotos.getVotos()) {
+				candidatoConMasVotos = candidatoActual;
+			}
+		}
+		if(candidatoConMasVotos.getNombre() == "-") throw new RuntimeException("No hay votos computados para ningun candidato");
+		return candidatoConMasVotos.getNombre();
+	}
+
+	/*Obtengo la informacion de los votos y le doy a cada candidato
+	 * la cantidad que obtuvieron */
+	private void computarVotosHastaElMomento() {
+		Iterator<Voto> iteradorVotos = votos.iterator();
+		while(iteradorVotos.hasNext()) {
+			Voto actual = iteradorVotos.next();
+			Candidato candidatoActual = this.validarPartidoYObtenerCandidato(actual.getNombreCandidato(), actual.getNombrePartido());
+			candidatoActual.sumarVoto();
+		}
+	}
+
 	
 }

@@ -4,9 +4,11 @@ public class Candidato {
 
 	private String nombre;
 	private Partido partido;
+	private int cantidadDeVotos;
 
 	public Candidato(String nombre) {
 		this.nombre = nombre;
+		this.cantidadDeVotos=0;
 	}
 
 	public String getNombre() {
@@ -27,6 +29,14 @@ public class Candidato {
 		if((otro.getNombre() == this.getNombre()) && (otro.getPartido().equals(this.getPartido()))) {
 			return true;
 		} else return false;
+	}
+
+	public void sumarVoto() {
+		this.cantidadDeVotos++;
+	}
+	
+	public int getVotos() {
+		return this.cantidadDeVotos;
 	}
 	
 }

@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class IntegracionTest {
@@ -25,6 +24,9 @@ public class IntegracionTest {
 		pro.registrarCandidato("Macri");
 		this.mesa.registrarPartido(pro);
 		
+		Partido fpv = new Partido("FPV");
+		fpv.registrarCandidato("Scioli");
+		this.mesa.registrarPartido(fpv);
 	}
 
 	@Test
@@ -74,6 +76,26 @@ public class IntegracionTest {
 			}
 		}
 		Assert.assertEquals(3, cuenta);
+	}
+	
+	@Test
+	public void queDevuelvaAlCandidatoConMasVotos() {
+		this.mesa.votar("Massa", "Frente Renovador");
+		this.mesa.votar("Massa", "Frente Renovador");
+		this.mesa.votar("Massa", "Frente Renovador");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Scioli", "FPV");
+		this.mesa.votar("Scioli", "FPV");
+		this.mesa.votar("Scioli", "FPV");
+		this.mesa.votar("Scioli", "FPV");
+		this.mesa.votar("Scioli", "FPV");
+		Assert.assertEquals("Macri", this.mesa.obtenerCandidatoConMasVotos());
 	}
 
 }
