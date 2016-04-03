@@ -48,8 +48,8 @@ public class Partido {
 	@Override
 	public boolean equals(Object obj) { //Dos partidos son iguales si tienen mismo nombre
 		Partido otroPartido = (Partido) obj;
-		if(otroPartido.getNombre() != this.getNombre()) return false;
-		return true;
+		if(otroPartido.getNombre() == this.getNombre()) return true;
+		else return false;
 	}
 	
 
