@@ -7,32 +7,38 @@ import org.junit.Test;
 
 public class IntegracionTest {
 
-	private static Mesa mesa;
+	private Mesa mesa;
 
 
-	@BeforeClass
-	public static void prepararMesa() {
-		mesa = new Mesa();
+	@Before
+	public void prepararMesa() {
+		this.mesa = new Mesa();
+		
 		Partido frenteRenovador = new Partido("Frente Renovador");
 		frenteRenovador.registrarCandidato("Massa");
-		mesa.registrarPartido(frenteRenovador);
+		this.mesa.registrarPartido(frenteRenovador);
+		
+		Partido pro = new Partido("Pro");
+		pro.registrarCandidato("Macri");
+		this.mesa.registrarPartido(pro);
+		
 	}
 
 	@Test
 	public void quePuedaVotarAMassa() {
-		int exito = mesa.votar("Massa", "Frente Renovador");
+		int exito = this.mesa.votar("Massa", "Frente Renovador");
 		Assert.assertEquals(1, exito);
 	}
 
 
 	@Test
 	public void quePuedaVerElVoto() {
-		mesa.votar("Massa", "Frente Renovador");
-		Assert.assertEquals("Massa", mesa.getUltimoVoto().getNombreCandidato());
-		Assert.assertEquals("Frente Renovador", mesa.getUltimoVoto().getNombrePartido());
+		this.mesa.votar("Massa", "Frente Renovador");
+		Assert.assertEquals("Massa", this.mesa.getUltimoVoto().getNombreCandidato());
+		Assert.assertEquals("Frente Renovador", this.mesa.getUltimoVoto().getNombrePartido());
 	}
 	
-	/*
+	
 	@Test
 	public void quePuedaVotarAMacriYAMassa() {
 		int exitoMacri = this.mesa.votar("Macri", "Pro");
@@ -41,6 +47,7 @@ public class IntegracionTest {
 		Assert.assertEquals(1, exitoMassa);
 	}
 	
+	/*
 	@Test
 	public void quePuedaVerLosVotosDeMacriYMassa() {
 		this.mesa.votar("Macri", "Pro");
