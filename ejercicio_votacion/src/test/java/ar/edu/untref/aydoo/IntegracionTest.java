@@ -1,5 +1,8 @@
 package ar.edu.untref.aydoo;
 
+import java.util.Iterator;
+import java.util.List;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -54,6 +57,23 @@ public class IntegracionTest {
 		this.mesa.votar("Massa", "Frente Renovador");
 		Assert.assertTrue(mesa.listarParaCadaVotoElNombreDelCandidato().contains("Macri"));
 		Assert.assertTrue(mesa.listarParaCadaVotoElNombreDelCandidato().contains("Massa"));
+	}
+	
+	@Test
+	public void queSiVotoAMassaTresVecesSeComputenAmbosVotos() {
+		this.mesa.votar("Massa", "Frente Renovador");
+		this.mesa.votar("Massa", "Frente Renovador");
+		this.mesa.votar("Massa", "Frente Renovador");
+		List<String> listaPorCadaVotoElNombreDelCandidato = this.mesa.listarParaCadaVotoElNombreDelCandidato();
+		Iterator<String> iteradorListaPorCadaVotoElNombreDelCandidato = listaPorCadaVotoElNombreDelCandidato.iterator();
+		int cuenta=0;
+		while(iteradorListaPorCadaVotoElNombreDelCandidato.hasNext()) {
+			String actual = iteradorListaPorCadaVotoElNombreDelCandidato.next();
+			if(actual == "Massa") {
+				cuenta++;
+			}
+		}
+		Assert.assertEquals(3, cuenta);
 	}
 
 }
