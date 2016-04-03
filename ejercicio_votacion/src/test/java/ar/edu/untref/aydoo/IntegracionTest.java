@@ -47,13 +47,13 @@ public class IntegracionTest {
 		Assert.assertEquals(1, exitoMassa);
 	}
 	
-	/*
+
 	@Test
 	public void quePuedaVerLosVotosDeMacriYMassa() {
 		this.mesa.votar("Macri", "Pro");
 		this.mesa.votar("Massa", "Frente Renovador");
-		Assert.assertTrue(mesa.listarVotosComoString().contains("Macri"));
-		Assert.assertTrue(mesa.listarVotosComoString().contains("Massa"));
-	}*/
+		Assert.assertTrue(mesa.listarParaCadaVotoElNombreDelCandidato().contains("Macri"));
+		Assert.assertTrue(mesa.listarParaCadaVotoElNombreDelCandidato().contains("Massa"));
+	}
 
 }

@@ -40,7 +40,7 @@ public class Mesa {
 	/*Devuelve una lista que tiene en cada posicion
 	 * el nombre del candidato votado en la misma posicion 
 	 * de la lista de votos*/
-	public List<String> listarVotosComoString() {
+	public List<String> listarParaCadaVotoElNombreDelCandidato() {
 		List<String> listaVotosComoString = new LinkedList<String>();
 		Iterator<Voto> iteradorVotos = this.votos.iterator();
 		while(iteradorVotos.hasNext()) {
