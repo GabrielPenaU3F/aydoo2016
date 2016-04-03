@@ -14,8 +14,8 @@ public class IntegracionTest {
 	public static void prepararMesa() {
 		mesa = new Mesa();
 		Partido frenteRenovador = new Partido("Frente Renovador");
+		frenteRenovador.registrarCandidato("Massa");
 		mesa.registrarPartido(frenteRenovador);
-		new Candidato("Massa", frenteRenovador);
 	}
 
 	@Test

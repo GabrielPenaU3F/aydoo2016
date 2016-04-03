@@ -28,8 +28,9 @@ public class Mesa {
 	private Candidato validarPartidoYObtenerCandidato(String nombreCandidato, String nombrePartido) {
 		Iterator<Partido> iteradorPartidos = this.partidos.iterator();
 		while(iteradorPartidos.hasNext()) {
-			if(iteradorPartidos.next().getNombre() == nombrePartido) {
-				Candidato candidatoBuscado = iteradorPartidos.next().getCandidatoPorNombre(nombreCandidato);
+			Partido actual = iteradorPartidos.next();
+			if(actual.getNombre() == nombrePartido) {
+				Candidato candidatoBuscado = actual.getCandidatoPorNombre(nombreCandidato);
 				return candidatoBuscado;
 			}
 		}
