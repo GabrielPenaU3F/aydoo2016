@@ -11,6 +11,7 @@ public class Mesa {
 	
 	public Mesa() {
 		this.votos = new LinkedList<Voto>();
+		this.partidos = new LinkedList<Partido>();
 	}
 
 	public int votar(String nombreCandidato, String nombrePartido) {
@@ -50,6 +51,10 @@ public class Mesa {
 	/*Devuelvo el ultimo voto de la lista*/
 	public Voto getUltimoVoto() {
 		return this.votos.get(this.votos.size() -1);
+	}
+	
+	public void registrarPartido(Partido partido) {
+		this.partidos.add(partido);
 	}
 
 	

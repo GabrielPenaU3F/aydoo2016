@@ -25,18 +25,24 @@ public class Partido {
 	public Candidato getCandidatoPorNombre(String nombreCandidato) {
 		Iterator<Candidato> iteradorCandidatos = this.candidatos.iterator();
 		while(iteradorCandidatos.hasNext()) {
-			if(iteradorCandidatos.next().getNombre() == nombreCandidato) {
-				return iteradorCandidatos.next();
+			Candidato actual = iteradorCandidatos.next();
+			if(actual.getNombre() == nombreCandidato) {
+				return actual;
 			}
 		}
 		throw new RuntimeException ("Error. Candidato no encontrado.");
 	}
 
 
-	public void registrarCandidato(Candidato candidato) {
+	public void registrarCandidato(String nombreCandidato) {
+		Candidato candidato = new Candidato(nombreCandidato);
+		candidato.setPartido(this);
 		this.candidatos.add(candidato);
 	}
 	
+	public List<Candidato> getCandidatos() {
+		return this.candidatos;
+	}
 	
 
 }

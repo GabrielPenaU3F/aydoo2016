@@ -9,20 +9,22 @@ public class VotoTest {
 	private static Voto voto1;
 	private static Voto voto2IgualAl1;
 	private static Voto voto3MismoCandidatoQueElUno;
-	private static Voto voto3MismoPartidoQueElUno;
+	private static Voto voto4MismoPartidoQueElUno;
 	
-	@BeforeClass
+	@BeforeClass //REHACER TODO
 	public static void crearVotos() {
+		
+		Candidato candidato1 = new Candidato("Candidato Uno");
 		Partido partido1 = new Partido("Partido Uno");
+		Candidato candidato2IgualAl1 = new Candidato("Candidato Uno");
+		Partido partido2IgualAl1 = new Partido("Partido Uno");
 		Partido partido3 = new Partido("Partido Tres");
-		Candidato candidato1 = new Candidato("Candidato Uno", partido1);
-		Candidato candidato2 = new Candidato("Candidato Uno", partido1);
-		Candidato candidato3MismoCandidatoQueElUno = new Candidato("Candidato Uno", partido3);
-		Candidato candidato4MismoPartidoQueElUno = new Candidato("Candidato Cuatro", partido1);
+		Candidato candidato4 = new Candidato("Candidato Cuatro");
+		
 		voto1 = new Voto(candidato1, partido1);
-		voto2IgualAl1 = new Voto(candidato2, partido1);
-		voto3MismoCandidatoQueElUno = new Voto(candidato3MismoCandidatoQueElUno, partido3);
-		voto3MismoPartidoQueElUno = new Voto(candidato4MismoPartidoQueElUno, partido1);
+		voto2IgualAl1 = new Voto(candidato2IgualAl1, partido2IgualAl1);
+		voto3MismoCandidatoQueElUno = new Voto(candidato1, partido3);
+		voto4MismoPartidoQueElUno = new Voto(candidato4, partido1);
 	}
 	
 	@Test
@@ -32,7 +34,7 @@ public class VotoTest {
 	
 	@Test
 	public void queEqualsDeFalsoConDosVotosDeDistintosCandidatos() {
-		Assert.assertFalse(voto1.equals(voto3MismoPartidoQueElUno));
+		Assert.assertFalse(voto1.equals(voto4MismoPartidoQueElUno));
 	}
 	
 	@Test
