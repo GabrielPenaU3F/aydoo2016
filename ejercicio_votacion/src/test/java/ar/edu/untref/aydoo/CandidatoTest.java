@@ -8,6 +8,7 @@ public class CandidatoTest {
 	
 	private static Candidato candidato1;
 	private static Candidato candidato2IgualAl1;
+	private static Candidato candidato3;
 	
 	@BeforeClass
 	public static void prepararCandidatos() {
@@ -16,11 +17,19 @@ public class CandidatoTest {
 		Partido partido1 = new Partido("Partido Uno");
 		candidato1.setPartido(partido1);
 		candidato2IgualAl1.setPartido(partido1);
+		
+		candidato3 = new Candidato("Candidato Tres");
+		candidato3.setPartido(partido1);
 	}
 	
 	@Test
-	public void queDosCandidatosIgualesSeanIguales() {
+	public void queEqualsDeTrueConDosCandidatosIguales() {
 		Assert.assertTrue(candidato1.equals(candidato2IgualAl1));
+	}
+	
+	@Test
+	public void queEqualsDeFalseConDosCandidatosDistintosDelMismoPartido() {
+		Assert.assertFalse(candidato1.equals(candidato3));
 	}
 
 }
