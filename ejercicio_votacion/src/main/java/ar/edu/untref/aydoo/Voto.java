@@ -2,13 +2,13 @@ package ar.edu.untref.aydoo;
 
 public class Voto {
 	
-	private String nombreCandidato;
-	private String nombrePartido;
+	private Candidato candidato;
+	private Partido partido;
 
 
-	public Voto(String nombreCandidato, String nombrePartido) {
-		this.nombreCandidato = nombreCandidato;
-		this.nombrePartido = nombrePartido;
+	public Voto(Candidato candidato, Partido partido) {
+		this.candidato = candidato;
+		this.partido = partido;
 	}
 
 
@@ -22,12 +22,12 @@ public class Voto {
 
 
 	public String getNombrePartido() {
-		return this.nombrePartido;
+		return this.partido.getNombre();
 	}
 
 
 	public String getNombreCandidato() {
-		return this.nombreCandidato;
+		return this.candidato.getNombre();
 	}
 	
 	

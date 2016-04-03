@@ -7,17 +7,34 @@ import java.util.List;
 public class Mesa {
 	
 	private List<Voto> votos;
+	private List<Partido> partidos;
 	
 	public Mesa() {
 		this.votos = new LinkedList<Voto>();
 	}
 
 	public int votar(String nombreCandidato, String nombrePartido) {
-		Voto voto = new Voto(nombreCandidato, nombrePartido);
+		Candidato candidatoAVotar = this.validarPartidoYObtenerCandidato(nombreCandidato, nombrePartido);
+		Partido partidoAVotar = candidatoAVotar.getPartido();
+		Voto voto = new Voto(candidatoAVotar, partidoAVotar);
 		this.votos.add(voto);
 		return 1;
 	}
 	
+	/*Itero la lista de partidos y al partido con el nobmre
+	 * que me dan, le pido su candidato con el nombre que busco 
+	 * Si el partido no esta, lanzo una excepcion*/
+	private Candidato validarPartidoYObtenerCandidato(String nombreCandidato, String nombrePartido) {
+		Iterator<Partido> iteradorPartidos = this.partidos.iterator();
+		while(iteradorPartidos.hasNext()) {
+			if(iteradorPartidos.next().getNombre() == nombrePartido) {
+				Candidato candidatoBuscado = iteradorPartidos.next().getCandidatoPorNombre(nombreCandidato);
+				return candidatoBuscado;
+			}
+		}
+		throw new RuntimeException ("Error. Partido no encontrado");
+	}
+
 	/*Devuelve una lista que tiene en cada posicion
 	 * el nombre del candidato votado en la misma posicion 
 	 * de la lista de votos*/
