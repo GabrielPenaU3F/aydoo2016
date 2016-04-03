@@ -24,14 +24,15 @@ public class IntegracionTest {
 		Assert.assertEquals(1, exito);
 	}
 
-	/*
+
 	@Test
 	public void quePuedaVerElVoto() {
-		this.mesa.votar("Massa", "Frente Renovador");
-		Voto votoMassa = new Voto("Massa", "Frente Renovador");
-		Assert.assertTrue(votoMassa.equals(this.mesa.getUltimoVoto()));
+		mesa.votar("Massa", "Frente Renovador");
+		Assert.assertEquals("Massa", mesa.getUltimoVoto().getNombreCandidato());
+		Assert.assertEquals("Frente Renovador", mesa.getUltimoVoto().getNombrePartido());
 	}
 	
+	/*
 	@Test
 	public void quePuedaVotarAMacriYAMassa() {
 		int exitoMacri = this.mesa.votar("Macri", "Pro");
