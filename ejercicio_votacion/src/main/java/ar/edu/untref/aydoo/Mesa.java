@@ -90,9 +90,11 @@ public class Mesa {
 		while(iteradorPartidos.hasNext()) {
 			Partido partidoActual = iteradorPartidos.next();
 			Iterator<Candidato> iteradorCandidatos = partidoActual.getCandidatos().iterator();
-			Candidato candidatoActual = iteradorCandidatos.next();
-			if(candidatoActual.getVotos() > candidatoConMasVotos.getVotos()) {
-				candidatoConMasVotos = candidatoActual;
+			while(iteradorCandidatos.hasNext()) {
+				Candidato candidatoActual = iteradorCandidatos.next();
+				if(candidatoActual.getVotos() > candidatoConMasVotos.getVotos()) {
+					candidatoConMasVotos = candidatoActual;
+				}
 			}
 		}
 		if(candidatoConMasVotos.getNombre() == "-") throw new RuntimeException("No hay votos computados para ningun candidato");
