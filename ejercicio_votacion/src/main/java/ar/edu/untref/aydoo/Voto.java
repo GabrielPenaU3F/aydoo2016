@@ -4,11 +4,13 @@ public class Voto {
 	
 	private Candidato candidato;
 	private Partido partido;
+	private Provincia provincia;
 
 
-	public Voto(Candidato candidato, Partido partido) {
+	public Voto(Candidato candidato, Partido partido, Provincia provincia) {
 		this.candidato = candidato;
 		this.partido = partido;
+		this.provincia = provincia;
 	}
 
 

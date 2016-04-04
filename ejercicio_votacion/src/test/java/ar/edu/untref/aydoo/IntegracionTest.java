@@ -98,4 +98,25 @@ public class IntegracionTest {
 		Assert.assertEquals("Macri", this.mesa.obtenerCandidatoConMasVotos());
 	}
 
+	@Test
+	public void queNoDevuelvaAUnCandidatoQueNoTieneMayoriaDeVotos() {
+		this.mesa.votar("Massa", "Frente Renovador");
+		this.mesa.votar("Massa", "Frente Renovador");
+		this.mesa.votar("Massa", "Frente Renovador");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Macri", "Pro");
+		this.mesa.votar("Scioli", "FPV");
+		this.mesa.votar("Scioli", "FPV");
+		this.mesa.votar("Scioli", "FPV");
+		this.mesa.votar("Scioli", "FPV");
+		this.mesa.votar("Scioli", "FPV");
+		Assert.assertNotEquals("Scioli", this.mesa.obtenerCandidatoConMasVotos());
+	}
+	
+	
 }
