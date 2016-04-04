@@ -31,6 +31,11 @@ public class Voto {
 	public String getNombreCandidato() {
 		return this.candidato.getNombre();
 	}
+
+
+	public String getNombreProvincia() {
+		return this.provincia.getNombre();
+	}
 	
 	
 	

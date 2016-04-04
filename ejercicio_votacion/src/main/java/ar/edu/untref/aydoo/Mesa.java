@@ -5,11 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Mesa {
-	
+
 	private List<Voto> votos;
 	private List<Partido> partidos;
 	private List<Provincia> provincias;
-	
+
 	public Mesa() {
 		this.votos = new LinkedList<Voto>();
 		this.partidos = new LinkedList<Partido>();
@@ -17,14 +17,25 @@ public class Mesa {
 	}
 
 	public int votar(String nombreCandidato, String nombrePartido, String nombreProvincia) {
-		Candidato candidatoAVotar = this.validarPartidoYObtenerCandidato(nombreCandidato, nombrePartido);
-		Partido partidoAVotar = candidatoAVotar.getPartido();
-		Provincia provinciaAVotar = this.getProvinciaPorNombre(nombreProvincia);
-		Voto voto = new Voto(candidatoAVotar, partidoAVotar, provinciaAVotar);
-		this.votos.add(voto);
-		return 1;
+		if((nombreCandidato != "") && (nombrePartido != "")) {
+			Candidato candidatoAVotar = this.validarPartidoYObtenerCandidato(nombreCandidato, nombrePartido);
+			Partido partidoAVotar = candidatoAVotar.getPartido();
+			Provincia provinciaAVotar = this.getProvinciaPorNombre(nombreProvincia);
+			Voto voto = new Voto(candidatoAVotar, partidoAVotar, provinciaAVotar);
+			this.votos.add(voto);
+			return 1;
+		}
+		else if ((nombreCandidato == "") && (nombrePartido == "")) {
+			Partido pBlanco = new Partido("VotoEnBlanco");
+			Candidato cBlanco = new Candidato("VotoEnBlanco");
+			Provincia provinciaAVotar = this.getProvinciaPorNombre(nombreProvincia);
+			Voto votoEnBlanco = new Voto(cBlanco, pBlanco, provinciaAVotar);
+			this.votos.add(votoEnBlanco);
+			return 1;
+		}
+		return 0;
 	}
-	
+
 	private Provincia getProvinciaPorNombre(String nombreProvincia) {
 		Iterator<Provincia> iteradorProvincias = this.provincias.iterator();
 		while(iteradorProvincias.hasNext()) {
@@ -67,7 +78,7 @@ public class Mesa {
 	public Voto getUltimoVoto() {
 		return this.votos.get(this.votos.size() -1);
 	}
-	
+
 	public void registrarPartido(Partido partido) {
 		this.partidos.add(partido);
 	}
@@ -103,5 +114,47 @@ public class Mesa {
 		this.provincias.add(provincia);
 	}
 
-	
+
+	public String obtenerPartidoConMasVotosEnUnaProvincia(String nombreProvincia) {
+		Partido partidoConMasVotosPorIteracion = new Partido("");
+		int cantidadDeVotosMaximaEnUnPartidoHastaAhora=0;
+		List<Voto> votosEnLaProvinciaQueQuiero = this.obtenerListaDeVotosEnProvincia(nombreProvincia);
+		Iterator<Partido> iteradorPartidos = this.partidos.iterator();
+		while (iteradorPartidos.hasNext()) {
+			Partido partidoActual = iteradorPartidos.next();
+			Iterator<Voto> iteradorVotos = votosEnLaProvinciaQueQuiero.iterator();
+			int votosEnEstePartido=0;
+			while (iteradorVotos.hasNext()) {
+				Voto votoActual = iteradorVotos.next();
+				if(votoActual.getNombrePartido() == partidoActual.getNombre()) {
+					votosEnEstePartido++;
+				}
+			}
+			if(votosEnEstePartido > cantidadDeVotosMaximaEnUnPartidoHastaAhora) {
+				cantidadDeVotosMaximaEnUnPartidoHastaAhora = votosEnEstePartido;
+				partidoConMasVotosPorIteracion = partidoActual;
+			}
+		}
+		if(partidoConMasVotosPorIteracion.getNombre() == "") {
+			throw new RuntimeException("Aun no se han computado votos para ningun partido en esta provincia");
+		}
+		return partidoConMasVotosPorIteracion.getNombre();
+	}
+
+
+	/*Dada una provincia, devuelvo un subconjunto de los votos 
+	 * que solo contenga los de esa provincia*/
+	private List<Voto> obtenerListaDeVotosEnProvincia(String nombreProvincia) {
+		List<Voto> listaDeVotosEnLaProvinciaQueQuiero = new LinkedList<Voto>();
+		Iterator<Voto> iteradorVotos = this.votos.iterator();
+		while (iteradorVotos.hasNext()) {
+			Voto actual = iteradorVotos.next();
+			if(actual.getNombreProvincia() == nombreProvincia) {
+				listaDeVotosEnLaProvinciaQueQuiero.add(actual);
+			}
+		}
+		return listaDeVotosEnLaProvinciaQueQuiero;
+	}
+
+
 }

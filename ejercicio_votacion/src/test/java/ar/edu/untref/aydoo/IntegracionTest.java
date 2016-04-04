@@ -123,5 +123,39 @@ public class IntegracionTest {
 		Assert.assertNotEquals("Scioli", this.mesa.obtenerCandidatoConMasVotos());
 	}
 	
+	@Test
+	public void queMeDevuelvaElPartidoConMasVotosEnUnaProvincia() {
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		Assert.assertEquals("FPV", this.mesa.obtenerPartidoConMasVotosEnUnaProvincia("Buenos Aires"));
+	}
+	
+	@Test
+	public void queNoMeDevuelvaUnPartidoQueNoSeaElQueTieneMasVotosEnUnaProvincia() {
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		Assert.assertNotEquals("Massa", this.mesa.obtenerPartidoConMasVotosEnUnaProvincia("Buenos Aires"));
+	}
+	
+	@Test
+	public void quePuedaVotarEnBlanco() {
+		this.mesa.votar("", "", "Buenos Aires");
+		Assert.assertEquals(this.mesa.getUltimoVoto().getNombreCandidato(), "VotoEnBlanco");
+		Assert.assertEquals(this.mesa.getUltimoVoto().getNombrePartido(), "VotoEnBlanco");
+		Assert.assertEquals(this.mesa.getUltimoVoto().getNombreProvincia(), "Buenos Aires");
+	}
+	
 	
 }

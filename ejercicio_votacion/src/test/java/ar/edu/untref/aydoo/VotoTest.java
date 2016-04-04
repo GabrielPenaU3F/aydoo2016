@@ -12,7 +12,7 @@ public class VotoTest {
 	private static Voto voto4MismoPartidoQueElUno;
 	private static Voto voto5MismaProvinciaQueElUno;
 	
-	@BeforeClass //REHACER TODO
+	@BeforeClass 
 	public static void crearVotos() {
 		
 		Candidato candidato1 = new Candidato("Candidato Uno");
