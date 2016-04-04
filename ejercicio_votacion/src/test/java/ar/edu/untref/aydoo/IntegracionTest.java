@@ -16,6 +16,11 @@ public class IntegracionTest {
 	public void prepararMesa() {
 		this.mesa = new Mesa();
 		
+		Provincia baires = new Provincia("Buenos Aires");
+		Provincia caba = new Provincia("Ciudad Autonoma de Buenos Aires");
+		this.mesa.registrarProvincia(baires);
+		this.mesa.registrarProvincia(caba);
+		
 		Partido frenteRenovador = new Partido("Frente Renovador");
 		frenteRenovador.registrarCandidato("Massa");
 		this.mesa.registrarPartido(frenteRenovador);
@@ -31,14 +36,14 @@ public class IntegracionTest {
 
 	@Test
 	public void quePuedaVotarAMassa() {
-		int exito = this.mesa.votar("Massa", "Frente Renovador");
+		int exito = this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
 		Assert.assertEquals(1, exito);
 	}
 
 
 	@Test
 	public void quePuedaVerElVoto() {
-		this.mesa.votar("Massa", "Frente Renovador");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
 		Assert.assertEquals("Massa", this.mesa.getUltimoVoto().getNombreCandidato());
 		Assert.assertEquals("Frente Renovador", this.mesa.getUltimoVoto().getNombrePartido());
 	}
@@ -46,8 +51,8 @@ public class IntegracionTest {
 	
 	@Test
 	public void quePuedaVotarAMacriYAMassa() {
-		int exitoMacri = this.mesa.votar("Macri", "Pro");
-		int exitoMassa = this.mesa.votar("Massa", "Frente Renovador");
+		int exitoMacri = this.mesa.votar("Macri", "Pro", "Ciudad Autonoma de Buenos Aires");
+		int exitoMassa = this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
 		Assert.assertEquals(1, exitoMacri);
 		Assert.assertEquals(1, exitoMassa);
 	}
@@ -55,17 +60,17 @@ public class IntegracionTest {
 
 	@Test
 	public void quePuedaVerLosVotosDeMacriYMassa() {
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Massa", "Frente Renovador");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
 		Assert.assertTrue(mesa.listarParaCadaVotoElNombreDelCandidato().contains("Macri"));
 		Assert.assertTrue(mesa.listarParaCadaVotoElNombreDelCandidato().contains("Massa"));
 	}
 	
 	@Test
-	public void queSiVotoAMassaTresVecesSeComputenAmbosVotos() {
-		this.mesa.votar("Massa", "Frente Renovador");
-		this.mesa.votar("Massa", "Frente Renovador");
-		this.mesa.votar("Massa", "Frente Renovador");
+	public void queSiVotoAMassaTresVecesSeComputenTodosLosVotos() {
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
 		List<String> listaPorCadaVotoElNombreDelCandidato = this.mesa.listarParaCadaVotoElNombreDelCandidato();
 		Iterator<String> iteradorListaPorCadaVotoElNombreDelCandidato = listaPorCadaVotoElNombreDelCandidato.iterator();
 		int cuenta=0;
@@ -80,41 +85,41 @@ public class IntegracionTest {
 	
 	@Test
 	public void queDevuelvaAlCandidatoConMasVotos() {
-		this.mesa.votar("Massa", "Frente Renovador");
-		this.mesa.votar("Massa", "Frente Renovador");
-		this.mesa.votar("Massa", "Frente Renovador");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Scioli", "FPV");
-		this.mesa.votar("Scioli", "FPV");
-		this.mesa.votar("Scioli", "FPV");
-		this.mesa.votar("Scioli", "FPV");
-		this.mesa.votar("Scioli", "FPV");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
 		Assert.assertEquals("Macri", this.mesa.obtenerCandidatoConMasVotos());
 	}
 
 	@Test
 	public void queNoDevuelvaAUnCandidatoQueNoTieneMayoriaDeVotos() {
-		this.mesa.votar("Massa", "Frente Renovador");
-		this.mesa.votar("Massa", "Frente Renovador");
-		this.mesa.votar("Massa", "Frente Renovador");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Macri", "Pro");
-		this.mesa.votar("Scioli", "FPV");
-		this.mesa.votar("Scioli", "FPV");
-		this.mesa.votar("Scioli", "FPV");
-		this.mesa.votar("Scioli", "FPV");
-		this.mesa.votar("Scioli", "FPV");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Massa", "Frente Renovador", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Macri", "Pro", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
+		this.mesa.votar("Scioli", "FPV", "Buenos Aires");
 		Assert.assertNotEquals("Scioli", this.mesa.obtenerCandidatoConMasVotos());
 	}
 	

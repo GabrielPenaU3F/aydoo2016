@@ -8,20 +8,34 @@ public class Mesa {
 	
 	private List<Voto> votos;
 	private List<Partido> partidos;
+	private List<Provincia> provincias;
 	
 	public Mesa() {
 		this.votos = new LinkedList<Voto>();
 		this.partidos = new LinkedList<Partido>();
+		this.provincias = new LinkedList<Provincia>();
 	}
 
-	public int votar(String nombreCandidato, String nombrePartido) {
+	public int votar(String nombreCandidato, String nombrePartido, String nombreProvincia) {
 		Candidato candidatoAVotar = this.validarPartidoYObtenerCandidato(nombreCandidato, nombrePartido);
 		Partido partidoAVotar = candidatoAVotar.getPartido();
-		Voto voto = new Voto(candidatoAVotar, partidoAVotar);
+		Provincia provinciaAVotar = this.getProvinciaPorNombre(nombreProvincia);
+		Voto voto = new Voto(candidatoAVotar, partidoAVotar, provinciaAVotar);
 		this.votos.add(voto);
 		return 1;
 	}
 	
+	private Provincia getProvinciaPorNombre(String nombreProvincia) {
+		Iterator<Provincia> iteradorProvincias = this.provincias.iterator();
+		while(iteradorProvincias.hasNext()) {
+			Provincia actual = iteradorProvincias.next();
+			if(actual.getNombre() == nombreProvincia) {
+				return actual;
+			}
+		}
+		throw new RuntimeException("Error. Provincia no encontrada");
+	}
+
 	/*Itero la lista de partidos y al partido con el nobmre
 	 * que me dan, le pido su candidato con el nombre que busco 
 	 * Si el partido no esta, lanzo una excepcion*/
@@ -83,6 +97,10 @@ public class Mesa {
 			Candidato candidatoActual = this.validarPartidoYObtenerCandidato(actual.getNombreCandidato(), actual.getNombrePartido());
 			candidatoActual.sumarVoto();
 		}
+	}
+
+	public void registrarProvincia(Provincia provincia) {
+		this.provincias.add(provincia);
 	}
 
 	

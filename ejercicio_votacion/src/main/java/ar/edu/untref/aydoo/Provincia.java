@@ -8,6 +8,10 @@ public class Provincia {
 		this.nombre = nombre;
 	}
 
+	public String getNombre() {
+		return this.nombre;
+	}
+
 
 
 }
