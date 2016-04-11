@@ -55,6 +55,31 @@ public class Libreria {
 		return false;
 		
 	}
+	
+	//Sobrecargo el metodo para poder comparar suscripciones
+	public boolean tieneEnStock(Suscripcion suscripcion) {
+		
+
+		Iterator<Comprable> iteradorStock = stock.iterator();
+		while(iteradorStock.hasNext()) {
+			
+			Comprable actual = iteradorStock.next();
+			if(actual.getClass() == Suscripcion.class) {
+				
+				if(suscripcion.equals(actual)) {
+					
+					return true;
+					
+				}
+				
+			}
+			
+			
+		}
+		
+		return false;
+		
+	}
 
 
 }

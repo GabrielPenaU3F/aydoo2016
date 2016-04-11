@@ -27,5 +27,23 @@ public class LibreriaTest {
 		Assert.assertTrue(libreria.tieneEnStock(hobbit));
 		
 	}
+	
+	@Test 
+	public void queElSilmarillionNoEste() {
+		
+		Libro silmarillion = new Libro("El Silmarillion", 150);
+		Assert.assertFalse(libreria.tieneEnStock(silmarillion));
+		
+	}
+	
+	@Test
+	public void queEsteBarcelonaYSuSuscripcion() {
+		
+		Revista barcelona = new Revista("Barcelona", 2, 20);
+		Suscripcion suscripcionABarcelona = new Suscripcion(barcelona);
+		Assert.assertTrue(libreria.tieneEnStock(barcelona));
+		Assert.assertTrue(libreria.tieneEnStock(suscripcionABarcelona));
+		
+	}
 
 }

@@ -16,5 +16,15 @@ public class Suscripcion implements Comprable {
 		return this.articulo;
 		
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		Suscripcion suscripcion = (Suscripcion) obj;
+		if(suscripcion.getArticulo().equals(this.getArticulo())) return true;
+		else return false;
+	}
+	
+	
 	
 }
