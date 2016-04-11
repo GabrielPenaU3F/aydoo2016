@@ -12,8 +12,8 @@ public class IntegracionTest {
 		Revista grafico = new Revista("El Grafico", 1, 30);
 		Libro hobbit = new Libro("El Hobbit", 50);
 		ArticuloDeLibreria lapicera = new ArticuloDeLibreria("Lapicera", 5);
-		Diario pagina12 = new Diario("Pagina12", 1, 12);
-		Diario clarin = new Diario("Clarin", 1, 13);
+		Diario pagina12 = new Diario("Pagina12", 30, 12);
+		Diario clarin = new Diario("Clarin", 30, 13);
 		libreria.agregarProducto(barcelona);
 		libreria.agregarProducto(grafico);
 		libreria.agregarProducto(hobbit);

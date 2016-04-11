@@ -27,7 +27,7 @@ public class ProductoTest {
 	@Test
 	public void queDosProductosDeDistintoTipoSeanDistintos() {
 		
-		Diario nyt = new Diario("New York Times", 1, 40);
+		Diario nyt = new Diario("New York Times", 30, 40);
 		Assert.assertFalse(this.hobbit.equals(nyt));
 		
 	}
