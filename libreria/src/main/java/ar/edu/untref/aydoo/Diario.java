@@ -4,9 +4,11 @@ public class Diario extends Producto implements Suscribible {
 	
 	private int periodicidad;
 	
-	public Diario (String nombre) {
+	public Diario (String nombre, int periodicidad, double precio) {
 		
 		this.nombre = nombre;
+		this.periodicidad = periodicidad;
+		this.precio = precio;
 		
 	}
 	

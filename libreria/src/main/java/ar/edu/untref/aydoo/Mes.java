@@ -19,7 +19,9 @@ public class Mes {
 		
 		Mes mes = (Mes) obj;
 		if(mes.getNombre() == this.nombre) {
+			
 			return true;
+			
 		}
 		else return false;
 			
