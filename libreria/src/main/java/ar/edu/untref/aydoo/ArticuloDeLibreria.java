@@ -11,15 +11,10 @@ public class ArticuloDeLibreria extends Producto {
 		
 	}
 
-	private double getIva() {
-		
-		return (this.iva)/100; //Se devuelve la tasa como multiplo: por ej. o.21
-		
-	}
 	
 	public double calcularPrecioFinal() {
 		
-		double precioFinal = this.precio + (this.precio)*(this.getIva());
+		double precioFinal = this.precio + ((this.precio)*(this.iva)/100);
 		return precioFinal;
 		
 	}
