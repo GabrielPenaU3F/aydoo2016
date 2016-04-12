@@ -8,6 +8,8 @@ public class IntegracionTest {
 	
 	@BeforeClass
 	public static void prepararDatosDePrueba() {
+		
+		//Armo el stock
 		Revista barcelona = new Revista("Barcelona", 2, 20);
 		Revista grafico = new Revista("El Grafico", 1, 30);
 		Libro hobbit = new Libro("El Hobbit", 50);
@@ -20,7 +22,16 @@ public class IntegracionTest {
 		libreria.agregarProducto(lapicera);
 		libreria.agregarProducto(pagina12);
 		libreria.agregarProducto(clarin);
+		
+		//Creo a los clientes
+		Cliente juan = new Cliente(libreria, "Juan", "Perez", "Rivadavia 9921" );
+		Cliente maria = new Cliente(libreria, "Maria", "Dominguez", "Urquiza 245");
+		libreria.registrarCliente(juan);
+		libreria.registrarCliente(maria);
+		
 	}
+	
+	
 
 	
 }

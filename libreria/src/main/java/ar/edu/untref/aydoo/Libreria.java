@@ -80,6 +80,37 @@ public class Libreria {
 		return false;
 		
 	}
+	
+	public void inicializarMes(Mes mes) {
+		
+		Iterator<Cliente> iteradorClientes = this.clientes.iterator();
+		while (iteradorClientes.hasNext()) {
+			
+			Cliente actual = iteradorClientes.next();
+			actual.setearMesALaCuenta(mes);
+			
+		}
+	}
+
+	public void registrarCliente(Cliente cliente) {
+		
+		this.clientes.add(cliente);
+		
+	}
+
+	public boolean verificarSiEstaEnStock(Comprable articulo) {
+		
+		Iterator<Comprable> iteradorStock = this.stock.iterator();
+		while (iteradorStock.hasNext()) {
+			
+			Comprable actual = iteradorStock.next();
+			if (actual.equals(articulo)) return true;
+			
+		}
+		
+		return false;
+		
+	}
 
 
 }

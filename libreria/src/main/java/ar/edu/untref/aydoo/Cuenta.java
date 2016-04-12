@@ -4,23 +4,11 @@ import java.util.List;
 
 public class Cuenta {
 	
-	//Se asume que las cuentas se renuevan cada mes
+	//Se asume que las cuentas se renuevan cada mes. Esto lo hace la libreria
 	
-	private Cliente cliente;
 	private List<Compra> compras;
 	private Mes mes;
 	
-	public Cuenta (Cliente cliente) {
-		
-		this.cliente = cliente;
-	
-	}
-	
-	public Cliente getCliente() {
-		
-		return this.cliente;
-		
-	}
 	
 	public void agregarCompra(Compra compra) {
 		
@@ -31,6 +19,12 @@ public class Cuenta {
 	public Mes getMes(Mes mes) {
 		
 		return this.mes;
+		
+	}
+	
+	public void setMes(Mes mes) {
+		
+		this.mes = mes;
 		
 	}
 

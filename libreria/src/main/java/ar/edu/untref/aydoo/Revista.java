@@ -12,6 +12,7 @@ public class Revista extends Producto implements Suscribible{
 		
 	}
 	
+	@Override
 	public int getPeriodicidad() {
 		
 		return this.periodicidad;

@@ -12,6 +12,7 @@ public class Diario extends Producto implements Suscribible {
 		
 	}
 	
+	@Override
 	public int getPeriodicidad() {
 		
 		return this.periodicidad;
