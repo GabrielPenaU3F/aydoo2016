@@ -18,4 +18,11 @@ public class Revista extends Producto implements Suscribible{
 		return this.periodicidad;
 		
 	}
+	
+	@Override
+	public void aplicarDescuento(int descuento) {
+		
+		this.precio = (this.precio - (this.precio*descuento/100));
+		
+	}
 }

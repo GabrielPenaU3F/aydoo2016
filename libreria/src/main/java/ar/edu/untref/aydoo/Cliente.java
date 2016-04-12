@@ -15,8 +15,8 @@ public class Cliente {
 		this.apellido = apellido;
 		this.direccion = direccion;
 		this.cuenta = new Cuenta();
-		this.canasta = new Compra(this.libreria.getMes());
 		this.libreria = libreria;
+		this.canasta = new Compra();
 		
 	}
 	
@@ -56,13 +56,28 @@ public class Cliente {
 		
 	}
 	
-	public void efectuarCompra() {
+	public void efectuarCompra(Mes mes) {
 		
-		//Pongo la compra en la cuenta y vacio la canasta
+		//Le paso el mes a la compra, la pongo en la cuenta y vacio la canasta
+		this.canasta.setMes(mes);
 		this.cuenta.agregarCompra(this.canasta);
-		this.canasta = new Compra(this.libreria.getMes());
+		this.canasta = new Compra(mes);
 		
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		Cliente cliente = (Cliente) obj;
+		if(this.getNombre() == cliente.getNombre() && this.getApellido() == cliente.getApellido() && this.getDireccion() == cliente.getDireccion()) {
+			
+			return true;
+			
+		}
+		return false;
+		
+	}
+
 	
 	
 }

@@ -1,6 +1,9 @@
 package ar.edu.untref.aydoo;
 
 import org.junit.BeforeClass;
+import org.junit.Test;
+
+import org.junit.Assert;
 
 public class IntegracionTest {
 	
@@ -10,6 +13,7 @@ public class IntegracionTest {
 	public static void prepararDatosDePrueba() {
 		
 		//Armo el stock
+		libreria = new Libreria();
 		Revista barcelona = new Revista("Barcelona", 2, 20);
 		Revista grafico = new Revista("El Grafico", 1, 30);
 		Libro hobbit = new Libro("El Hobbit", 50);
@@ -28,6 +32,26 @@ public class IntegracionTest {
 		Cliente maria = new Cliente(libreria, "Maria", "Dominguez", "Urquiza 245");
 		libreria.registrarCliente(juan);
 		libreria.registrarCliente(maria);
+		
+	}
+	
+	@Test
+	public void compraDeJuan() {
+		
+		Cliente juan = new Cliente(libreria, "Juan", "Perez", "Rivadavia 9921" );
+		Libro hobbit = new Libro("El Hobbit", 50);
+		ArticuloDeLibreria lapicera = new ArticuloDeLibreria("Lapicera", 5);
+		Revista grafico = new Revista("El Grafico", 1, 30);
+		
+		juan.agregarALaCanasta(hobbit);
+		juan.agregarALaCanasta(lapicera);
+		juan.agregarALaCanasta(lapicera);
+		juan.agregarALaCanasta(grafico);
+		
+		Mes agosto = new Mes("Agosto");
+		juan.efectuarCompra(agosto);
+		
+		Assert.assertEquals(92.1, libreria.calcularMontoACobrar(agosto, juan),0);
 		
 	}
 	

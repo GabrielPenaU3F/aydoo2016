@@ -15,6 +15,13 @@ public class Compra {
 		this.mes = mes;
 		
 	}
+	
+	//Sobrecargo el constructor para poder crear compras ficticias que luego ire llenando. Esas nunca se guardan en ningun lado
+	public Compra() {
+		
+		this.articulosComprados = new LinkedList<Comprable>();
+		
+	}
 
 	public void agregarArticulo(Comprable articulo) {
 		
@@ -98,6 +105,31 @@ public class Compra {
 		}
 		
 		return articulosSuscribibles;
+	}
+
+	public double obtenerMontoTotal() {
+		
+		double montoAcumulado=0;
+		
+		Iterator<Comprable> iteradorArticulosComprados = this.articulosComprados.iterator();
+		while(iteradorArticulosComprados.hasNext()) {
+			
+			Comprable actual = iteradorArticulosComprados.next();
+			if(!actual.getClass().equals(Suscripcion.class)) { //Si es una suscripcion sigue iterando sin hacer nada
+				
+				montoAcumulado += ((Producto)actual).calcularPrecioFinal();
+				
+			}
+			
+		}
+		return montoAcumulado;
+		
+	}
+
+	public void setMes(Mes mes) {
+		
+		this.mes = mes;
+		
 	}
 	
 	
