@@ -55,6 +55,24 @@ public class IntegracionTest {
 		
 	}
 	
+	@Test
+	public void compraDeMaria() {
+		
+		Cliente maria = new Cliente(libreria, "Maria", "Dominguez", "Urquiza 245");
+		Revista barcelona = new Revista("Barcelona", 2, 20);
+		Suscripcion suscripcionABarcelona = new Suscripcion(barcelona);
+		Diario pagina12 = new Diario("Pagina12", 30, 12);
+		
+		maria.agregarALaCanasta(suscripcionABarcelona);
+		maria.agregarALaCanasta(pagina12);
+		
+		Mes enero = new Mes("Enero");
+		maria.efectuarCompra(enero);
+		
+		Assert.assertEquals(37.6, libreria.calcularMontoACobrar(enero, maria),0);
+		
+	}
+	
 
 	
 	
