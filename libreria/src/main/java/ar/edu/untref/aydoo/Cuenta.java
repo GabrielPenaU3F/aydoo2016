@@ -9,7 +9,6 @@ public class Cuenta {
 	//Se asume que las cuentas se renuevan cada mes. Esto lo hace la libreria
 	
 	private List<Compra> compras;
-	private Mes mes;
 	
 	public Cuenta () {
 		
@@ -24,17 +23,7 @@ public class Cuenta {
 		
 	}
 	
-	public Mes getMes(Mes mes) {
-		
-		return this.mes;
-		
-	}
 	
-	public void setMes(Mes mes) {
-		
-		this.mes = mes;
-		
-	}
 	
 	public boolean contiene(Compra compra) {
 		
@@ -51,4 +40,6 @@ public class Cuenta {
 			
 	}
 
+
+	
 }

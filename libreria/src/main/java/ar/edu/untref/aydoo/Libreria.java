@@ -8,6 +8,7 @@ public class Libreria {
 
 	private List<Cliente> clientes;
 	private List<Comprable> stock;
+	private Mes mes;
 	
 	public Libreria() {
 		
@@ -81,16 +82,6 @@ public class Libreria {
 		
 	}
 	
-	public void inicializarMes(Mes mes) {
-		
-		Iterator<Cliente> iteradorClientes = this.clientes.iterator();
-		while (iteradorClientes.hasNext()) {
-			
-			Cliente actual = iteradorClientes.next();
-			actual.setearMesALaCuenta(mes);
-			
-		}
-	}
 
 	public void registrarCliente(Cliente cliente) {
 		
@@ -109,6 +100,24 @@ public class Libreria {
 		}
 		
 		return false;
+		
+	}
+
+	public Mes getMes() {
+		
+		return this.mes;
+		
+	}
+	
+	public void setMes(Mes mes) {
+		
+		this.mes =  mes;
+		
+	}
+	
+	public void calcularMontoACobrar(Mes mes, Cliente cliente) {
+		
+		
 		
 	}
 

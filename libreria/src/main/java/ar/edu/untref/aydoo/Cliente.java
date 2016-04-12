@@ -15,7 +15,7 @@ public class Cliente {
 		this.apellido = apellido;
 		this.direccion = direccion;
 		this.cuenta = new Cuenta();
-		this.canasta = new Compra();
+		this.canasta = new Compra(this.libreria.getMes());
 		this.libreria = libreria;
 		
 	}
@@ -44,11 +44,6 @@ public class Cliente {
 		
 	}
 
-	public void setearMesALaCuenta(Mes mes) {
-		
-		this.cuenta.setMes(mes);
-		
-	}
 	
 	public void agregarALaCanasta(Comprable articulo) {
 		
@@ -65,7 +60,7 @@ public class Cliente {
 		
 		//Pongo la compra en la cuenta y vacio la canasta
 		this.cuenta.agregarCompra(this.canasta);
-		this.canasta = new Compra();
+		this.canasta = new Compra(this.libreria.getMes());
 		
 	}
 	
