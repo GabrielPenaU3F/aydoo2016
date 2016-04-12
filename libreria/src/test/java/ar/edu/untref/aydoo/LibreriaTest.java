@@ -24,7 +24,7 @@ public class LibreriaTest {
 	public void queElHobbitEste() {
 		
 		Libro hobbit = new Libro("El Hobbit", 50);
-		Assert.assertTrue(libreria.tieneEnStock(hobbit));
+		Assert.assertTrue(libreria.verificarSiEstaEnStock(hobbit));
 		
 	}
 	
@@ -32,7 +32,7 @@ public class LibreriaTest {
 	public void queElSilmarillionNoEste() {
 		
 		Libro silmarillion = new Libro("El Silmarillion", 150);
-		Assert.assertFalse(libreria.tieneEnStock(silmarillion));
+		Assert.assertFalse(libreria.verificarSiEstaEnStock(silmarillion));
 		
 	}
 	
@@ -41,8 +41,8 @@ public class LibreriaTest {
 		
 		Revista barcelona = new Revista("Barcelona", 2, 20);
 		Suscripcion suscripcionABarcelona = new Suscripcion(barcelona);
-		Assert.assertTrue(libreria.tieneEnStock(barcelona));
-		Assert.assertTrue(libreria.tieneEnStock(suscripcionABarcelona));
+		Assert.assertTrue(libreria.verificarSiEstaEnStock(barcelona));
+		Assert.assertTrue(libreria.verificarSiEstaEnStock(suscripcionABarcelona));
 		
 	}
 

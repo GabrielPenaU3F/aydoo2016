@@ -34,53 +34,6 @@ public class Libreria {
 
 	}
 
-	public boolean tieneEnStock(Producto producto) {
-
-		Iterator<Comprable> iteradorStock = stock.iterator();
-		while(iteradorStock.hasNext()) {
-
-			Comprable actual = iteradorStock.next();
-			if(actual.getClass() != Suscripcion.class) { //Me aseguro que sea un producto
-
-				if(((Producto)actual).equals(producto)) {
-
-					return true;
-
-				}
-
-			}
-
-		}
-
-		return false;
-
-	}
-
-	//Sobrecargo el metodo para poder comparar suscripciones
-	public boolean tieneEnStock(Suscripcion suscripcion) {
-
-
-		Iterator<Comprable> iteradorStock = stock.iterator();
-		while(iteradorStock.hasNext()) {
-
-			Comprable actual = iteradorStock.next();
-			if(actual.getClass() == Suscripcion.class) {
-
-				if(suscripcion.equals(actual)) {
-
-					return true;
-
-				}
-
-			}
-
-
-		}
-
-		return false;
-
-	}
-
 
 	public void registrarCliente(Cliente cliente) {
 
