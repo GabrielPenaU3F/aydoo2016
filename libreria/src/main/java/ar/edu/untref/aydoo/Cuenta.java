@@ -49,9 +49,9 @@ public class Cuenta {
 		while (iteradorDeArticulosSuscriptos.hasNext()) {
 
 			Suscribible actual = iteradorDeArticulosSuscriptos.next();
+			actual.aplicarDescuento(20);
 			for(int i=0; i < actual.getPeriodicidad(); i++) { //Lo agrego tantas veces como se haya comprado por la suscripcion
 				
-				actual.aplicarDescuento(20);
 				compraDeTodosLosArticulosSuscriptos.agregarArticulo((Comprable)actual); //Podria evitar este casteo haciendo que Suscribible herede de COmprable pero es una relacion que queda como innecesaria
 			
 			}

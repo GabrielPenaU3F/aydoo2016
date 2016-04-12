@@ -69,7 +69,7 @@ public class IntegracionTest {
 		Mes enero = new Mes("Enero");
 		maria.efectuarCompra(enero);
 		
-		Assert.assertEquals(37.6, libreria.calcularMontoACobrar(enero, maria),0);
+		Assert.assertEquals(44, libreria.calcularMontoACobrar(enero, maria),0);
 		
 	}
 	
