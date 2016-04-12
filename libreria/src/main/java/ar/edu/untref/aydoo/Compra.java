@@ -49,5 +49,28 @@ public class Compra {
 		return false;
 		
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		Compra otraCompra = (Compra) obj;
+		Iterator<Comprable> iteradorArticulosComprados = this.articulosComprados.iterator();
+		while (iteradorArticulosComprados.hasNext()) {
+			
+			Comprable actual = iteradorArticulosComprados.next();
+			if (!otraCompra.contiene(actual)) { //Si aparece algun articulo que no esta en la otra compra
+				
+				return false;
+				
+			}
+			
+		}
+		
+		//Si termino de recorrer y no falto ninguno
+		return true;
+		
+	}
+	
+	
 	
 }

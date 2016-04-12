@@ -1,5 +1,7 @@
 package ar.edu.untref.aydoo;
 
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Cuenta {
@@ -8,6 +10,12 @@ public class Cuenta {
 	
 	private List<Compra> compras;
 	private Mes mes;
+	
+	public Cuenta () {
+		
+		this.compras = new LinkedList<Compra>();
+		
+	}
 	
 	
 	public void agregarCompra(Compra compra) {
@@ -26,6 +34,21 @@ public class Cuenta {
 		
 		this.mes = mes;
 		
+	}
+	
+	public boolean contiene(Compra compra) {
+		
+		Iterator<Compra> iteradorCompras = this.compras.iterator();
+		while (iteradorCompras.hasNext()) {
+			
+			Compra actual = iteradorCompras.next();
+				
+				if (actual.equals(compra)) return true;
+			
+		}
+		
+		return false;
+			
 	}
 
 }
