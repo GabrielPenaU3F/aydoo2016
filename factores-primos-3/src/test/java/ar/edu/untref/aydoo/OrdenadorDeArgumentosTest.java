@@ -33,4 +33,19 @@ public class OrdenadorDeArgumentosTest {
 		
 	}
 	
+	@Test
+	public void queEsteElFormato() {
+		
+		Assert.assertTrue(OrdenadorDeArgumentos.estaElArgumentoFormat(this.string));
+		
+	}
+	
+	@Test
+	public void queNoEsteElFormato() {
+		
+		this.string[2] = "sghñhñh";
+		Assert.assertTrue(OrdenadorDeArgumentos.estaElArgumentoFormat(this.string));
+		
+	}
+	
 }
