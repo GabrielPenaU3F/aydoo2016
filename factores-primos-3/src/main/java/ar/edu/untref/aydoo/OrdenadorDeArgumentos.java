@@ -20,16 +20,25 @@ public class OrdenadorDeArgumentos {
 			argsOrdenado = new String[args.length]; 
 			argsOrdenado[0] = args[0]; //El primer argumento es el numero siempre
 			argsOrdenado[1] = obtenerFormato(args);
+			
 			for(int i=2; i < argsOrdenado.length; i++) {
 				
 				for(int j=1; j < args.length; j++) {
 				
-					if (args[j].startsWith("--format=")) {
+					if (!args[j].startsWith("--format=")) {
 						
-						j++;
+						argsOrdenado[i] = args[j];
 						
 					}
-				argsOrdenado[i] = args[j];
+					else {
+						
+						if(j < args.length-1) { //Si aun queda algo para recorrer
+							
+							j++;
+							argsOrdenado[i] = args[j];
+							
+						}
+					}
 					
 				}
 				
@@ -41,6 +50,7 @@ public class OrdenadorDeArgumentos {
 			argsOrdenado = new String[args.length+1]; 
 			argsOrdenado[0] = args[0]; //El primer argumento es el numero siempre
 			argsOrdenado[1] = "--format=pretty";
+			
 			for (int i=2; i < argsOrdenado.length; i++) {
 
 				argsOrdenado[i] = args[i-1];

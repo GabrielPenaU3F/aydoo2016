@@ -48,4 +48,31 @@ public class OrdenadorDeArgumentosTest {
 		
 	}
 	
+	@Test
+	public void queAgregueElFormatoPrettyYOrdeneCorrectamenteElFormatoEnLaPrimerPosicion() {
+		
+		this.string[1] = "blabla";
+		this.string[2] = "alagsdh";
+		String esperado[] = new String[4];
+		esperado[0] = "1";
+		esperado[1] = "--format=pretty";
+		esperado[2] = "blabla";
+		esperado[3] = "alagsdh";
+		Assert.assertArrayEquals(esperado, OrdenadorDeArgumentos.ordenar(this.string));
+		
+	}
+	
+	@Test
+	public void queOrdeneCorrectamenteElFormatoEnLaPrimerPosicionConElFormatoYaIndicado() {
+		
+		this.string[1] = "blabla";
+		this.string[2] = "--format=pretty";
+		String esperado[] = new String[3];
+		esperado[0] = "1";
+		esperado[1] = "--format=pretty";
+		esperado[2] = "blabla";
+		Assert.assertArrayEquals(esperado, OrdenadorDeArgumentos.ordenar(this.string));
+		
+	}
+	
 }
