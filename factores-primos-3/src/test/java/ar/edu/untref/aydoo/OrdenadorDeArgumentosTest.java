@@ -11,10 +11,13 @@ public class OrdenadorDeArgumentosTest {
 	@Before
 	public void prepararArray() {
 		
-		this.string = new String[3];
+		this.string = new String[6];
 		this.string[0] = "1";
 		this.string[1] = "--format=pretty";
 		this.string[2] = "blabla";
+		this.string[3] = "blabla3";
+		this.string[4] = "blabla4";
+		this.string[5] = "blabla5";
 		
 	}
 	
@@ -49,30 +52,64 @@ public class OrdenadorDeArgumentosTest {
 	}
 	
 	@Test
-	public void queAgregueElFormatoPrettyYOrdeneCorrectamenteElFormatoEnLaPrimerPosicion() {
+	public void queAgregueElFormatoPrettyYPongaCorrectamenteElFormatoEnLaPrimerPosicion() {
 		
-		this.string[1] = "blabla";
+		this.string[1] = "blabla1";
 		this.string[2] = "alagsdh";
-		String esperado[] = new String[4];
+		String esperado[] = new String[this.string.length+1];
 		esperado[0] = "1";
 		esperado[1] = "--format=pretty";
-		esperado[2] = "blabla";
+		esperado[2] = "blabla1";
 		esperado[3] = "alagsdh";
-		Assert.assertArrayEquals(esperado, OrdenadorDeArgumentos.ordenar(this.string));
+		esperado[4] = "blabla3";
+		esperado[5] = "blabla4";
+		esperado[6] = "blabla5";
+		Assert.assertArrayEquals(esperado, OrdenadorDeArgumentos.ponerFormatEnPosicion1(this.string));
 		
 	}
 	
 	@Test
-	public void queOrdeneCorrectamenteElFormatoEnLaPrimerPosicionConElFormatoYaIndicado() {
+	public void quePongaCorrectamenteElFormatoEnLaPrimerPosicionConElFormatoYaIndicado() {
 		
-		this.string[1] = "blabla";
+		this.string[1] = "blabla1";
 		this.string[2] = "--format=pretty";
-		String esperado[] = new String[3];
+		String esperado[] = new String[this.string.length];
 		esperado[0] = "1";
 		esperado[1] = "--format=pretty";
-		esperado[2] = "blabla";
-		Assert.assertArrayEquals(esperado, OrdenadorDeArgumentos.ordenar(this.string));
+		esperado[2] = "blabla1";
+		esperado[3] = "blabla3";
+		esperado[4] = "blabla4";
+		esperado[5] = "blabla5";
+		Assert.assertArrayEquals(esperado, OrdenadorDeArgumentos.ponerFormatEnPosicion1(this.string));
 		
 	}
 	
+	@Test
+	public void quePongaCorrectamenteElOutputEnLaUltimaPosicion() {
+		
+		String[] stringLargoConOutput = new String[6];
+		stringLargoConOutput[0] = "25";
+		stringLargoConOutput[1] = "--format=pretty";
+		stringLargoConOutput[2] = "--output-file=gshshfsfh";
+		stringLargoConOutput[3] = "dhgjd";
+		stringLargoConOutput[4] = "fjhdjf";
+		stringLargoConOutput[5] = "dfgjdgkjdgk";
+		
+		String esperado[] = new String[6];
+		esperado[0] = "25";
+		esperado[1] = "--format=pretty";
+		esperado[2] = "dhgjd";
+		esperado[3] = "fjhdjf";
+		esperado[4] = "dfgjdgkjdgk";
+		esperado[5] = "--output-file=gshshfsfh";
+		Assert.assertArrayEquals(esperado, OrdenadorDeArgumentos.ponerOutputEnPosicionFinal(stringLargoConOutput));;
+		
+	}
+	
+	@Test
+	public void queElColocadorDeOutputDevuelvaElArrayTalComoEstaSiNoHayOutput() {
+		
+		Assert.assertArrayEquals(this.string, OrdenadorDeArgumentos.ponerOutputEnPosicionFinal(this.string));;
+		
+	}
 }
