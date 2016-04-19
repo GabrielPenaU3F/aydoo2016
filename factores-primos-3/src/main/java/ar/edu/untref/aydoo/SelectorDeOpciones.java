@@ -90,5 +90,11 @@ public class SelectorDeOpciones {
 		this.resultadoParcial = resultadoNuevo;
 		
 	}
+	
+	public void modificarFactores(List<Integer> factores) {
+		
+		this.factores = factores;
+		
+	}
 
 }
