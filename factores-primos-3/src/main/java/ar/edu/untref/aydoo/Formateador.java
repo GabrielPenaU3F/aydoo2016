@@ -4,6 +4,8 @@ import java.util.List;
 
 public class Formateador {
 	
+	
+	/*
 	public static String formatear(String args[]) {
 		
 		final String pretty = "--format=pretty";
@@ -62,5 +64,5 @@ public class Formateador {
 		return mensajeFormateado;
 	}
 
-
+*/
 }

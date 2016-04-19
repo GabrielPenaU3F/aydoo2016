@@ -2,7 +2,7 @@ package ar.edu.untref.aydoo;
 
 public class OrdenadorDeArgumentos {
 
-	public static String[] ordenar(String[] args) {
+	public String[] ordenar(String[] args) {
 
 
 		/*Esto funciona de la siguiente manera:
@@ -16,16 +16,16 @@ public class OrdenadorDeArgumentos {
 		 */
 		String argsOrdenado[];
 
-		argsOrdenado = ponerFormatEnPosicion1(args);
+		argsOrdenado = this.ponerFormatEnPosicion1(args);
 
-		argsOrdenado = ponerOutputEnPosicionFinal(argsOrdenado);
+		argsOrdenado = this.ponerOutputEnPosicionFinal(argsOrdenado);
 
 		return argsOrdenado;
 
 	}
 
 
-	public static boolean estaElArgumentoOutput(String[] args) {
+	public boolean estaElArgumentoOutput(String[] args) {
 
 		for(int i=1; i < args.length; i++) {
 
@@ -43,13 +43,13 @@ public class OrdenadorDeArgumentos {
 
 
 
-	public static String[] ponerFormatEnPosicion1(String[] args) {
+	public String[] ponerFormatEnPosicion1(String[] args) {
 		String[] argsOrdenado;
-		if (estaElArgumentoFormat(args)) { //Si he especificado el formato
+		if (this.estaElArgumentoFormat(args)) { //Si he especificado el formato
 
 			argsOrdenado = new String[args.length]; 
 			argsOrdenado[0] = args[0]; //El primer argumento es el numero siempre
-			argsOrdenado[1] = obtenerFormato(args);
+			argsOrdenado[1] = this.obtenerFormato(args);
 
 			/*i recorre el array nuevo
 			 * j recorre el array viejo
@@ -102,9 +102,9 @@ public class OrdenadorDeArgumentos {
 	 * por eso copia esa parte y trabaja con lo demas.
 	 * mismo funcionamiento que el otro ordenador
 	 */
-	public static String[] ponerOutputEnPosicionFinal(String[] args) {
+	public String[] ponerOutputEnPosicionFinal(String[] args) {
 
-		if (!estaElArgumentoOutput(args)) {
+		if (!this.estaElArgumentoOutput(args)) {
 
 			return args;
 
@@ -145,7 +145,7 @@ public class OrdenadorDeArgumentos {
 
 
 
-	public static String obtenerFormato(String[] args) {
+	public String obtenerFormato(String[] args) {
 
 		for (int i=0; i < args.length; i++) {
 
@@ -162,7 +162,7 @@ public class OrdenadorDeArgumentos {
 	}
 
 
-	public static boolean estaElArgumentoFormat(String[] args) {
+	public boolean estaElArgumentoFormat(String[] args) {
 
 		for(int i=1; i < args.length; i++) {
 

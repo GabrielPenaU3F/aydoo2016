@@ -1,6 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class Output extends Opcion {
 	
@@ -12,9 +13,12 @@ public class Output extends Opcion {
 	}
 
 	@Override
-	protected void solicitarEjecucionConParametro(String numero, String stringParcial, String parametro) {
+	protected void solicitarEjecucionConParametro(SelectorDeOpciones selectorDeOpciones, String parametro) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+
 
 }

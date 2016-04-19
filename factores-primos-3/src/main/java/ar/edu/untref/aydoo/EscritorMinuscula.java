@@ -2,7 +2,7 @@ package ar.edu.untref.aydoo;
 
 public class EscritorMinuscula {
 
-	public static String[] ponerEnMinuscula(String[] args) {
+	public String[] ponerEnMinuscula(String[] args) {
 		
 		String[] argsMinuscula = new String[args.length];
 		for(int i=0; i < args.length; i++) {

@@ -1,9 +1,19 @@
 package ar.edu.untref.aydoo;
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class EscritorMinusculaTest {
+	
+	private static EscritorMinuscula escritor;
+	
+	@BeforeClass
+	public static void inicializarEscritor() {
+		
+		escritor = new EscritorMinuscula();
+		
+	}
 	
 	@Test
 	public void queSiEstaEnMinusculaLoDejeEnMinuscula() {
@@ -14,7 +24,7 @@ public class EscritorMinusculaTest {
 		arrayEnMinuscula[2] = "chau";
 		arrayEnMinuscula[3] = "hola y chau";
 		
-		Assert.assertArrayEquals(arrayEnMinuscula, EscritorMinuscula.ponerEnMinuscula(arrayEnMinuscula));
+		Assert.assertArrayEquals(arrayEnMinuscula, escritor.ponerEnMinuscula(arrayEnMinuscula));
 		
 	}
 	
@@ -33,7 +43,7 @@ public class EscritorMinusculaTest {
 		arrayEnMinuscula[2] = "chau++";
 		arrayEnMinuscula[3] = "hol4 y ch4u";
 		
-		Assert.assertArrayEquals(arrayEnMinuscula, EscritorMinuscula.ponerEnMinuscula(arrayOriginal));
+		Assert.assertArrayEquals(arrayEnMinuscula, escritor.ponerEnMinuscula(arrayOriginal));
 		
 	}
 

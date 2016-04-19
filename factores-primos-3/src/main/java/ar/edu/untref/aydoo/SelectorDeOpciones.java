@@ -6,30 +6,64 @@ import java.util.List;
 
 public class SelectorDeOpciones {
 
-	private static List<Opcion> listaDeOpcionesDisponibles = new LinkedList<Opcion>();
+	private List<Opcion> listaDeOpcionesDisponibles;
+	private List<Integer> factores;
+	private OrdenadorDeArgumentos ordenadorArgs;
+	private Factorizador factorizador;
+	private String resultadoParcial;
+	
+	public SelectorDeOpciones() {
+		
+		this.listaDeOpcionesDisponibles = new LinkedList<Opcion>();
+		this.ordenadorArgs = new OrdenadorDeArgumentos();
+		this.factorizador = new Factorizador();
+		this.resultadoParcial = new String("");
+		
+	}
 
-	public static String factorizarConOpciones(String args[]) {
+	public String factorizarConOpciones(String args[]) {
 
-		String argsOrdenado[] = OrdenadorDeArgumentos.ordenar(args);
-		String resultadoParcial = "";
+		String argsOrdenado[] = this.ordenadorArgs.ordenar(args);
 
-		for (int i=1; i < argsOrdenado.length; i++) { //argsOrdenado[0] es el numero
+		this.factores = this.factorizador.obtenerFactores(Integer.parseInt(argsOrdenado[0]));
+
+		int limiteDelFor = verificarSiTieneOutput(argsOrdenado);
+		/*argsOrdenado[0] es el numero
+		 * argsOrdenado[1] es el formato
+		 *el for va hasta el final si no hay output
+		 *si hay output es la ultima posicion y no la debe tocar
+		 */
+		for (int i=2; i < limiteDelFor; i++) { 
 
 			Opcion opcionActual = seleccionarOpcion(argsOrdenado[i]);
-			opcionActual.solicitarEjecucion(argsOrdenado[0], resultadoParcial, argsOrdenado[i]);
+			opcionActual.solicitarEjecucion(this, argsOrdenado[i]);
 
 		}
-
-		return resultadoParcial;
+		String resultadoFinal = this.resultadoParcial;
+		return resultadoFinal;
 
 	}
 
 
 
 
-	private static Opcion seleccionarOpcion(String opcion) {
+	public int verificarSiTieneOutput(String[] args) {
 
-		Iterator<Opcion> iteradorOpcionesDisponibles = listaDeOpcionesDisponibles.iterator();
+		if (args[args.length-1].startsWith("--output-file=")) {
+
+			return args.length-1;
+
+		}
+
+		return args.length;
+	}
+
+
+
+
+	private Opcion seleccionarOpcion(String opcion) {
+
+		Iterator<Opcion> iteradorOpcionesDisponibles = this.listaDeOpcionesDisponibles.iterator();
 		while (iteradorOpcionesDisponibles.hasNext()) {
 
 			Opcion actual = iteradorOpcionesDisponibles.next();
@@ -43,6 +77,18 @@ public class SelectorDeOpciones {
 
 		throw new OpcionInexistenteException();
 
+	}
+	
+	public List<Integer> getFactores() {
+		
+		return this.factores;
+		
+	}
+	
+	public void modificarResultadoParcial(String resultadoNuevo) {
+		
+		this.resultadoParcial = resultadoNuevo;
+		
 	}
 
 }
