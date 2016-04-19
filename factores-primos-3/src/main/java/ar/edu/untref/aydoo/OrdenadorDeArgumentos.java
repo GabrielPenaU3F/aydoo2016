@@ -115,26 +115,26 @@ public class OrdenadorDeArgumentos {
 		argsOrdenado[1] = args[1];
 		String parametroDeOutput = "";
 
-			int i=2;
-			for(int j=2; j < args.length; j++) {
+		int i=2;
+		for(int j=2; j < args.length; j++) {
 
-				if (!args[j].startsWith("--output-file=")) {
+			if (!args[j].startsWith("--output-file=")) {
 
-					argsOrdenado[i] = args[j];
-				}
-				else {
-
-					parametroDeOutput = args[j];
-					if(j < args.length-1) { //Si aun queda algo para recorrer
-
-						j++;
-						argsOrdenado[i] = args[j];
-
-					}
-				}
-				i++;
-
+				argsOrdenado[i] = args[j];
 			}
+			else {
+
+				parametroDeOutput = args[j];
+				if(j < args.length-1) { //Si aun queda algo para recorrer
+
+					j++;
+					argsOrdenado[i] = args[j];
+
+				}
+			}
+			i++;
+
+		}
 
 		argsOrdenado[args.length-1] = parametroDeOutput;
 		return argsOrdenado;
