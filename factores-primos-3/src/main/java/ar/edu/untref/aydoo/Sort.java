@@ -10,6 +10,8 @@ public class Sort extends Opcion {
 
 		this.parametros = new LinkedList<String>();
 		this.opcion = "--sort:";
+		this.parametros.add("asc");
+		this.parametros.add("des");
 
 	}
 
@@ -31,10 +33,10 @@ public class Sort extends Opcion {
 
 	public List<Integer> ordenarDescendente(List<Integer> factores) {
 
-			List<Integer> factoresOrdenados = factores;
-			Collections.sort(factoresOrdenados);
-			Collections.reverse(factoresOrdenados);
-			return factoresOrdenados;
+		List<Integer> factoresOrdenados = factores;
+		Collections.sort(factoresOrdenados);
+		Collections.reverse(factoresOrdenados);
+		return factoresOrdenados;
 
 	}
 
@@ -44,7 +46,7 @@ public class Sort extends Opcion {
 		List<Integer> factoresOrdenados = factores;
 		Collections.sort(factoresOrdenados);
 		return factoresOrdenados;
-		
+
 	}
 
 }

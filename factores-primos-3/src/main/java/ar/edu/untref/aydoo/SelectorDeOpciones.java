@@ -11,6 +11,7 @@ public class SelectorDeOpciones {
 	private OrdenadorDeArgumentos ordenadorArgs;
 	private Factorizador factorizador;
 	private String resultadoParcial;
+	private int numero;
 	
 	public SelectorDeOpciones() {
 		
@@ -25,6 +26,7 @@ public class SelectorDeOpciones {
 
 		String argsOrdenado[] = this.ordenadorArgs.ordenar(args);
 
+		this.numero = Integer.parseInt(args[0]);
 		this.factores = this.factorizador.obtenerFactores(Integer.parseInt(argsOrdenado[0]));
 
 		int limiteDelFor = verificarSiTieneOutput(argsOrdenado);
@@ -94,6 +96,12 @@ public class SelectorDeOpciones {
 	public void modificarFactores(List<Integer> factores) {
 		
 		this.factores = factores;
+		
+	}
+
+	public int getNumero() {
+		
+		return this.numero;
 		
 	}
 
