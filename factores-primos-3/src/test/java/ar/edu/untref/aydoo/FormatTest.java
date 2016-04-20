@@ -29,8 +29,7 @@ public class FormatTest {
 	@Test
 	public void queFormateeCorrectamenteEl360EnPretty() {
 
-		String mensaje = "360:";
-		String numeroPretty = format.formatearPretty(mensaje, factores);
+		String numeroPretty = format.formatearPretty(360, factores);
 		Assert.assertEquals(0, numeroPretty.compareTo("360: 2 2 2 3 3 5"));
 
 	}
@@ -39,8 +38,7 @@ public class FormatTest {
 	@Test
 	public void queFormateeCorrectamenteEl360EnQuiet() {
 
-		String mensaje = "";
-		String numeroQuiet = format.formatearQuiet(mensaje, factores);
+		String numeroQuiet = format.formatearQuiet(360, factores);
 		String numeroFormateado = String.format("2\n2\n2\n3\n3\n5\n");
 		Assert.assertEquals(0, numeroFormateado.compareTo(numeroQuiet));
 

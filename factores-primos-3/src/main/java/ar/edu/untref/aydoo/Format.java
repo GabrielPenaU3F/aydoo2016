@@ -38,26 +38,26 @@ public class Format extends Opcion {
 	protected void solicitarEjecucionConParametro(SelectorDeOpciones selectorDeOpciones, String parametro) {
 
 		int numero = selectorDeOpciones.getNumero();
-		String mensaje = (numero + ":");
 		List<Integer> factores = selectorDeOpciones.getFactores();
 
 		if(parametro == "pretty") {
 
-			String mensajeFormateado = this.formatearPretty(mensaje, factores);
+			String mensajeFormateado = this.formatearPretty(numero, factores);
 			selectorDeOpciones.modificarResultadoParcial(mensajeFormateado);
 
 		}
 		else if (parametro == "quiet") {
 
-			String mensajeFormateado = this.formatearQuiet(mensaje, factores);
+			String mensajeFormateado = this.formatearQuiet(numero, factores);
 			selectorDeOpciones.modificarResultadoParcial(mensajeFormateado);
 
 		}
 
 	}
 
-	public String formatearQuiet(String mensaje, List<Integer> factores) {
+	public String formatearQuiet(int numero, List<Integer> factores) {
 
+		String mensaje = "";
 		for(int i=0; i < factores.size(); i++) {
 
 			mensaje = mensaje.concat(factores.get(i) + "\n");
@@ -70,8 +70,9 @@ public class Format extends Opcion {
 
 
 
-	public String formatearPretty(String mensaje, List<Integer> factores) {
+	public String formatearPretty(int numero, List<Integer> factores) {
 
+		String mensaje = numero + ":";
 		for(int i=0; i < factores.size(); i++) {
 
 			mensaje = mensaje.concat(" " + factores.get(i));

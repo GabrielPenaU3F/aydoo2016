@@ -32,55 +32,23 @@ public class SelectorDeOpciones {
 		this.numero = Integer.parseInt(args[0]);
 		this.factores = this.factorizador.obtenerFactores(Integer.parseInt(argsOrdenado[0]));
 
-		int limiteDelFor;
-		if(this.verificarSiTieneOutput(argsOrdenado)) {
-			
-			limiteDelFor = argsOrdenado.length-1;
-			
-		}
-		else {
-			
-			limiteDelFor = argsOrdenado.length;
-			
-		}
 		/*argsOrdenado[0] es el numero
 		 * argsOrdenado[1] es el formato
-		 *el for va hasta el final si no hay output
-		 *si hay output es la ultima posicion y no la debe tocar
+		 *la ultima posicion es el output, no la debe tocar
 		 */
-		for (int i=2; i < limiteDelFor; i++) { 
+		for (int i=2; i < argsOrdenado.length-1; i++) { 
 
 			Opcion opcionActual = this.seleccionarOpcion(argsOrdenado[i]);
 			opcionActual.solicitarEjecucion(this, argsOrdenado[i]);
 
 		}
 		this.seleccionarOpcion(argsOrdenado[1]).solicitarEjecucion(this, argsOrdenado[1]); //Pido formatear
-		if (this.verificarSiTieneOutput(argsOrdenado)) {
-			
-			this.seleccionarOpcion(argsOrdenado[argsOrdenado.length-1]).solicitarEjecucion(this, argsOrdenado[argsOrdenado.length-1]);;
-			
-		}
+		this.seleccionarOpcion(argsOrdenado[argsOrdenado.length-1]).solicitarEjecucion(this, argsOrdenado[argsOrdenado.length-1]);;
 		
 		String resultadoFinal = this.resultadoParcial;
 		return resultadoFinal;
 
 	}
-
-
-
-
-	public boolean verificarSiTieneOutput(String[] args) {
-
-		if (args[args.length-1].startsWith("--output-file=")) {
-
-			return true;
-
-		}
-
-		return false;
-	}
-
-
 
 
 	private Opcion seleccionarOpcion(String opcion) {
@@ -123,6 +91,12 @@ public class SelectorDeOpciones {
 
 		return this.numero;
 
+	}
+
+	public String getResultado() {
+		
+		return this.resultadoParcial;
+		
 	}
 
 }
