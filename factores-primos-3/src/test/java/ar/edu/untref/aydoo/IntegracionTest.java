@@ -42,6 +42,17 @@ public class IntegracionTest {
 		
 	}
 	
+	@Test(expected=OpcionInexistenteException.class) 
+	public void queNoFuncioneSiLePasoUnaOpcionIncorrecta() {
+		
+		String[] args = new String[3];
+		args[0] = "360";
+		args[1] = "--sort:asc";
+		args[2] = "caca-total";
+		this.programa = new Program(args);
+		
+	}
+	
 	@Test(expected=ParametroInexistenteException.class)
 	public void queNoFuncioneSiLePasoUnFormatoIncorrecto() {
 		
