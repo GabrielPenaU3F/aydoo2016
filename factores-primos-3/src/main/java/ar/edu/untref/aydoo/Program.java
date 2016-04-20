@@ -6,7 +6,7 @@ public class Program {
 	private EscritorMinuscula escritorMinuscula;
 	private SelectorDeOpciones selectorDeOpciones;
 
-	private Program(String args[]) {
+	public Program(String args[]) {
 
 		this.escritorMinuscula = new EscritorMinuscula();
 		this.selectorDeOpciones = new SelectorDeOpciones();
@@ -14,10 +14,12 @@ public class Program {
 
 	}
 
-	private void ejecutar(String args[]) {
+
+	public String ejecutar(String args[]) {
 
 		String argsMinuscula[] = this.escritorMinuscula.ponerEnMinuscula(args);
-		System.out.print(this.selectorDeOpciones.factorizarConOpciones(argsMinuscula));
+		String resultado = this.selectorDeOpciones.factorizarConOpciones(argsMinuscula);
+		return resultado;
 
 	}
 

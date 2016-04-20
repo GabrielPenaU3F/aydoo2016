@@ -1,6 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import java.util.List;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Format extends Opcion {
@@ -11,6 +12,25 @@ public class Format extends Opcion {
 		this.opcion = "--format=";
 		this.parametros.add("pretty");
 		this.parametros.add("quiet");
+
+	}
+	
+	@Override
+	protected String seleccionarParametro(String argumento) {
+
+		Iterator<String> iteradorParametros = this.parametros.iterator();
+		while (iteradorParametros.hasNext()) {
+
+			String parametroActual = iteradorParametros.next();
+			if (argumento.endsWith(parametroActual)) {
+
+				return parametroActual;
+
+			}
+
+		}
+
+		throw new ParametroInexistenteException();
 
 	}
 

@@ -1,6 +1,5 @@
 package ar.edu.untref.aydoo;
 
-import java.util.Iterator;
 import java.util.List;
 
 public abstract class Opcion {
@@ -13,23 +12,7 @@ public abstract class Opcion {
 		return this.opcion;
 	}
 
-	private String seleccionarParametro(String argumento) {
-
-		Iterator<String> iteradorParametros = this.parametros.iterator();
-		while (iteradorParametros.hasNext()) {
-
-			String parametroActual = iteradorParametros.next();
-			if (argumento.endsWith(parametroActual)) {
-
-				return parametroActual;
-
-			}
-
-		}
-
-		throw new ParametroInexistenteException();
-
-	}
+	protected abstract String seleccionarParametro(String argumento);
 
 	public void solicitarEjecucion(SelectorDeOpciones selectorDeOpciones, String argumento) {
 

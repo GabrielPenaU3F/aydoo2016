@@ -49,6 +49,7 @@ public class OrdenadorDeArgumentosTest {
 	public void queNoEsteElFormato() {
 
 		this.string[2] = "sghñhñh";
+		
 		Assert.assertTrue(this.ordenador.estaElArgumentoFormat(this.string));
 
 	}
@@ -66,6 +67,7 @@ public class OrdenadorDeArgumentosTest {
 		esperado[4] = "blabla3";
 		esperado[5] = "blabla4";
 		esperado[6] = "blabla5";
+		
 		Assert.assertArrayEquals(esperado, this.ordenador.ponerFormatEnPosicion1(this.string));
 
 	}
@@ -82,6 +84,7 @@ public class OrdenadorDeArgumentosTest {
 		esperado[3] = "blabla3";
 		esperado[4] = "blabla4";
 		esperado[5] = "blabla5";
+		
 		Assert.assertArrayEquals(esperado, this.ordenador.ponerFormatEnPosicion1(this.string));
 
 	}
@@ -104,14 +107,23 @@ public class OrdenadorDeArgumentosTest {
 		esperado[3] = "fjhdjf";
 		esperado[4] = "dfgjdgkjdgk";
 		esperado[5] = "--output-file=gshshfsfh";
+		
 		Assert.assertArrayEquals(esperado, this.ordenador.ponerOutputEnPosicionFinal(stringLargoConOutput));;
 
 	}
 
 	@Test
-	public void queElColocadorDeOutputDevuelvaElArrayTalComoEstaSiNoHayOutput() {
+	public void queElColocadorDeOutputDevuelvaElArrayComoEstaYConUnGuionEnUltimaPosicionSiNoHayOutput() {
 
-		Assert.assertArrayEquals(this.string, this.ordenador.ponerOutputEnPosicionFinal(this.string));;
+		String esperado[] = new String[this.string.length+1];
+		for (int i=0; i < this.string.length; i++) {
+			
+			esperado[i] = this.string[i];
+			
+		}
+		esperado[this.string.length] = "--output-file=-";
+		
+		Assert.assertArrayEquals(esperado, this.ordenador.ponerOutputEnPosicionFinal(this.string));
 
 	}
 }

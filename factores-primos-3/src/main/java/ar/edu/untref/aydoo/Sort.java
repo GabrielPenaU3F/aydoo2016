@@ -1,6 +1,7 @@
 package ar.edu.untref.aydoo;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,6 +13,25 @@ public class Sort extends Opcion {
 		this.opcion = "--sort:";
 		this.parametros.add("asc");
 		this.parametros.add("des");
+
+	}
+	
+	@Override
+	protected String seleccionarParametro(String argumento) {
+
+		Iterator<String> iteradorParametros = this.parametros.iterator();
+		while (iteradorParametros.hasNext()) {
+
+			String parametroActual = iteradorParametros.next();
+			if (argumento.endsWith(parametroActual)) {
+
+				return parametroActual;
+
+			}
+
+		}
+
+		throw new ParametroInexistenteException();
 
 	}
 

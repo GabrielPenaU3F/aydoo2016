@@ -8,6 +8,7 @@ public class Output extends Opcion {
 
 		this.parametros = new LinkedList<String>();
 		this.opcion = "--output-file=";
+		this.parametros.add("");
 
 	}
 
@@ -15,6 +16,13 @@ public class Output extends Opcion {
 	protected void solicitarEjecucionConParametro(SelectorDeOpciones selectorDeOpciones, String parametro) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	protected String seleccionarParametro(String argumento) {
+		
+		return "";
+		
 	}
 
 

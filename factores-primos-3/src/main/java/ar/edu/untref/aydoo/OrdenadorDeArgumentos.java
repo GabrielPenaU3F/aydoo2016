@@ -13,6 +13,7 @@ public class OrdenadorDeArgumentos {
 		 * para eliminar ese problema de la logica del formateador
 		 * El format quedara siempre en la posicion 1 del array nuevo
 		 * El output quedara siempre en la posicion final del array nuevo
+		 * Si no hay opcion de output se le colocara un --output-file=""
 		 */
 		String argsOrdenado[];
 
@@ -106,8 +107,15 @@ public class OrdenadorDeArgumentos {
 
 		if (!this.estaElArgumentoOutput(args)) {
 
-			return args;
-
+			String[] argsConOutput = new String[args.length+1];
+			for(int i=0; i < args.length; i++) {
+				
+				argsConOutput[i] = args[i];
+				
+			}
+			argsConOutput[args.length] = "--output-file=-";
+			return argsConOutput;
+			
 		}
 
 		String[] argsOrdenado = new String[args.length]; 
