@@ -42,4 +42,17 @@
 
         }
 
+        public double getMontoTotalAPagar() {
+
+            double montoTotal=0;
+            for(Compra compra : this.listaDeCompras){
+
+                montoTotal += compra.getMontoTotal();
+
+            }
+            return montoTotal;
+
+        }
+
+
     }

@@ -48,4 +48,16 @@ public class Compra {
 
 	}
 
+    public double getMontoTotal() {
+
+        double montoTotal=0;
+        for(Producto producto : this.listaDeProductos){
+
+            montoTotal += producto.getPrecio();
+
+        }
+        return montoTotal;
+
+    }
+
 }

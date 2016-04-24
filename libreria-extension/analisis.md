@@ -26,3 +26,10 @@ Problemas:
 	-El metodo calcularMontoTotal para obtener el monto a cobrarle a un cliente, está ubicado en la librería y viola el encapsulamiento de varias clases (le pide al cliente todas sus compras y a cada compra todos sus productos, y la misma clase librería se encarga de sumar. Aquí se pudieron distribuír mejor las responsabilidades.
 	-La librería tiene una lista de clientes pero jamás realiza una validación, con lo cual esa lista no hace nada.
 	-No se lanzan excepciones en ningun caso.
+
+Mi trabajo:
+
+Primero, agrego espaciado en el código. 
+Luego refactorizo el método calcularMontoACobrar(Cliente cliente) para que ya no viole el encapsulamiento. 
+También elimino la lista de clientes de la librería y los métodos para accederla, ya que jamás los usa (no valida), y el test que probaba ese método (inútil, ya que de nuevo, no realiza ninguna validación en el código), y quito las líneas sobrantes de todos los tests en las cuales agregaban el cliente a la librería.
+Elimino la clase Program. 

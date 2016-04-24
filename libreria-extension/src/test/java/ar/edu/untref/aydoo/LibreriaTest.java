@@ -5,15 +5,6 @@ import org.junit.Test;
 
 public class LibreriaTest {
 
-	@Test
-	public void permiteAgregarUnCliente(){
-		
-		Libreria libreria = new Libreria();
-		Cliente cliente = new Cliente("Pablo", "roca 349");
-		libreria.agregarCliente(cliente);
-				
-		Assert.assertEquals(cliente, libreria.getListaDeClientes().get(0));
-	}
 	
 	@Test
 	public void unClienteCompraUnLibroEnNoviembreYNoEstaSuscripto(){
@@ -27,7 +18,6 @@ public class LibreriaTest {
 		
 		compra.agregarProducto(libroDeCocina);
 		marcos.agregarCompra(compra);
-		libreria.agregarCliente(marcos);
 		
 		Assert.assertEquals(montoEsperado, libreria.calcularMontoTotal(marcos), 0.0);		
 	}
@@ -42,8 +32,7 @@ public class LibreriaTest {
 		Producto libroDeConstruccion = new Libro("Construcciones basicas", 50);
 		Producto folios = new ArticuloDeLibreria("Folios", 10);
 		double montoEsperado = 62.1;
-		
-		libreria.agregarCliente(pablo);
+
 		compra.agregarProducto(libroDeConstruccion);
 		compra.agregarProducto(folios);
 		pablo.agregarCompra(compra);		
@@ -63,8 +52,7 @@ public class LibreriaTest {
 		Producto lapicera2 = new ArticuloDeLibreria("Lapicera", 5);
 		Periodicidad mensual = new Periodicidad(30);
 		Producto elGrafico = new Revista("El Grafico", 30, mensual);
-		
-		libreria.agregarCliente(juan);
+
 		compra.agregarProducto(elHobbit);
 		compra.agregarProducto(lapicera1);
 		compra.agregarProducto(lapicera2);
@@ -85,8 +73,7 @@ public class LibreriaTest {
 		Compra compra = new Compra(febrero);
 		Periodicidad quincenal = new Periodicidad(15);
 		Suscribible revistaPronto = new Revista("Revista Pronto", 25, quincenal);
-		
-		libreria.agregarCliente(pedro);
+
 		compra.agregarProductoSuscribible(revistaPronto, false);
 		pedro.agregarCompra(compra);
 				
@@ -110,7 +97,6 @@ public class LibreriaTest {
 		compra.agregarProductoSuscribible(revistaBarcelona, true);
 		compra.agregarProducto(diarioPagina12);
 		maria.agregarCompra(compra);
-		libreria.agregarCliente(maria);
 		
 		double montoEsperado = 44;
 		
