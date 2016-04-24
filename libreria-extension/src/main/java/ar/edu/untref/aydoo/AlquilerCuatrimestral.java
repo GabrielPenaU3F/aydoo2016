@@ -8,16 +8,15 @@ public class AlquilerCuatrimestral extends Alquiler {
         String nombre = "Alquiler " + libro.getNombre();
         super.setNombre(nombre);
         super.setLibro(libro);
-        super.setPrecio(this.calcularPrecio());
         super.setPeriodo(cantidadDeCuatrimestres);
+        super.setPrecio(this.calcularPrecio());
 
     }
 
     @Override
-    public double calcularPrecio() {
+    protected double calcularPrecio() {
 
-        int periodo = this.getPeriodo();
-        return (( periodo * super.getPrecioCuatrimestral()) - this.calcularDescuento());
+        return ((this.getPeriodo() * super.getPrecioCuatrimestral()) - this.calcularDescuento());
 
     }
 
