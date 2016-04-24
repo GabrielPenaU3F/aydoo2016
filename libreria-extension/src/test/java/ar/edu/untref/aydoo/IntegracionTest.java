@@ -3,7 +3,7 @@ package ar.edu.untref.aydoo;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class LibreriaTest {
+public class IntegracionTest {
 
 	
 	@Test
@@ -19,7 +19,8 @@ public class LibreriaTest {
 		compra.agregarProducto(libroDeCocina);
 		marcos.agregarCompra(compra);
 		
-		Assert.assertEquals(montoEsperado, libreria.calcularMontoTotal(marcos), 0.0);		
+		Assert.assertEquals(montoEsperado, libreria.calcularMontoTotal(marcos), 0.0);
+
 	}
 	
 	@Test
@@ -38,6 +39,7 @@ public class LibreriaTest {
 		pablo.agregarCompra(compra);		
 		
 		Assert.assertEquals(montoEsperado, libreria.calcularMontoTotal(pablo), 0.0);
+
 	}
 	
 	@Test
@@ -62,6 +64,7 @@ public class LibreriaTest {
 		double montoEsperado = 92.1;
 		
 		Assert.assertEquals(montoEsperado, libreria.calcularMontoTotal(juan), 0.0);
+
 	}
 	
 	@Test
@@ -80,6 +83,7 @@ public class LibreriaTest {
 		double montoEsperado = 50;
 		
 		Assert.assertEquals(montoEsperado, libreria.calcularMontoTotal(pedro), 0.0);
+
 	}	
 	
 	@Test
@@ -101,5 +105,38 @@ public class LibreriaTest {
 		double montoEsperado = 44;
 		
 		Assert.assertEquals(montoEsperado, libreria.calcularMontoTotal(maria), 0.0);
+
 	}
+
+    @Test
+    public void queCalculeCorrectamenteLosMontosDeUnClienteQueAlquiloDosLibrosUnoDiarioOtroCuatrimestral() {
+
+        Libreria libreria = new Libreria();
+        Cliente pepe = new Cliente("Pepe", "Belgrano 2257");
+        Mes enero = new Mes("Enero");
+        Compra compra = new Compra(enero);
+        Periodicidad quincenal = new Periodicidad(15);
+        Suscribible revistaBarcelona = new Revista("Revista Barcelona", 20, quincenal);
+        Periodicidad diaria = new Periodicidad(1);
+        Producto diarioPagina12 = new Periodico("Diario Pagina 12", 12, diaria);
+
+        compra.agregarProductoSuscribible(revistaBarcelona, true);
+        compra.agregarProducto(diarioPagina12);
+        pepe.agregarCompra(compra);
+
+        double montoEsperado = 44;
+
+        Libro hobbit = new Libro("El Hobbit", 70);
+        Libro hp1 = new Libro("Harry Potter y la Piedra Filosofal", 50);
+        Alquiler alquilerHobbit = new AlquilerDiario(hobbit, 10);
+        Alquiler alquilerHP1 = new AlquilerCuatrimestral(hp1, 2);
+
+        compra.agregarProducto(alquilerHobbit);
+        compra.agregarProducto(alquilerHP1);
+
+        montoEsperado += (100 + 1440);
+
+        Assert.assertEquals(montoEsperado, libreria.calcularMontoTotal(pepe), 0.0);
+
+    }
 }

@@ -42,4 +42,8 @@ Creo la clase abstracta Alquiler, con tres clases que heredan de ella: AlquilerM
 El alquiler tiene un periodo, medido en unidades de tiempo. Cada alquiler concreto conoce en que unidades de tiempo lo medirá.
 El alquiler tiene también el precio del alquiler diario, el precio del alquiler mensual y el precio del alquiler cuatrimestral. Cuando las clases AlquilerDiario, AlquilerMensual y AlquilerCuatrimestral son creadas, se setean automaticamente ese precio llamando al metodo setPrecio de la clase Producto. De esta forma puedo modificar los precios de los alquileres en cualquier momento sin tener que tocar las clases concretas.
 La clase AlquilerCuatrimestral ademas, al setear su precio, le descuenta el monto correspondiente.
+Testeo las tres clases.
+Cambio el nombre a la clase LibreriaTest por IntegracionTest
+
+
 
