@@ -3,6 +3,17 @@ package ar.edu.untref.aydoo;
 
 public class AlquilerDiario extends Alquiler {
 
+    public AlquilerDiario(Libro libro, int cantidadDeDias) {
+
+        String nombre = "Alquiler " + libro.getNombre();
+        super.setNombre(nombre);
+        super.setLibro(libro);
+        this.validarPeriodo(cantidadDeDias);
+        super.setPeriodo(cantidadDeDias);
+        super.setPrecio(this.calcularPrecio());
+
+    }
+
     @Override
     protected double calcularPrecio() {
 
