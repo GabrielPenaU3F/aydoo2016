@@ -44,6 +44,9 @@ El alquiler tiene también el precio del alquiler diario, el precio del alquiler
 La clase AlquilerCuatrimestral ademas, al setear su precio, le descuenta el monto correspondiente.
 Testeo las tres clases.
 Cambio el nombre a la clase LibreriaTest por IntegracionTest
+Agrego un test de integracion para tocar el alquiler de libros y funciona bien.
+
+Conclusión: salvo el problema de estar muy mal testeado, las validaciones faltantes y el tema del encapsulamiento que ya mencioné (y este último, corregí) el código que recibí resultó ser muy bueno por el hecho de que pude implementar la extensión (sin tomar en cuenta mi pequeña corrección) en pocas horas y sin tocar las clases ya creadas. 
 
 
 
