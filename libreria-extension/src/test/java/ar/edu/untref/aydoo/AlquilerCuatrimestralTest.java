@@ -26,6 +26,15 @@ public class AlquilerCuatrimestralTest {
         Assert.assertEquals(720.0, alquilerCuatri.getPrecio(), 0.0);
 
     }
-    
+
+    @Test
+    public void queElPrecioCuatrimestralConDescuentoSeCalculeCorrectamenteParaDosCuatrimestres() {
+
+        Libro hobbit = new Libro("El Hobbit", 20);
+        Alquiler alquilerCuatri = new AlquilerCuatrimestral(hobbit, 2);
+        Assert.assertEquals(1440, alquilerCuatri.getPrecio(), 0.0);
+
+    }
+
     
 }
