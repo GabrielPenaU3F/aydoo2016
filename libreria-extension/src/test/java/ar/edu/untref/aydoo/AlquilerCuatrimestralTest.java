@@ -36,5 +36,21 @@ public class AlquilerCuatrimestralTest {
 
     }
 
+    @Test(expected = PeriodoExcedidoException.class)
+    public void queNoAlquilePor3Cuatrimestres() {
+
+        Libro hobbit = new Libro("El Hobbit", 20);
+        Alquiler alquilerCuatri = new AlquilerCuatrimestral(hobbit, 3);
+
+    }
+
+    @Test(expected = PeriodoExcedidoException.class)
+    public void queNoAlquilePor0Cuatrimestres() {
+
+        Libro hobbit = new Libro("El Hobbit", 20);
+        Alquiler alquilerCuatri = new AlquilerCuatrimestral(hobbit, 0);
+
+    }
+
     
 }

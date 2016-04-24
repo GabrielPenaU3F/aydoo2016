@@ -60,5 +60,7 @@ public abstract class Alquiler extends Producto {
         return this.precioCuatrimestral;
 
     }
+
+    protected abstract void validarPeriodo(int periodo);
     
 }
