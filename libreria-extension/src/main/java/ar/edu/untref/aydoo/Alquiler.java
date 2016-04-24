@@ -19,11 +19,7 @@ public abstract class Alquiler extends Producto {
 
     }
 
-    protected double calcularPrecio() {
-
-        return this.getPeriodo() * this.getPrecio();
-
-    }
+    protected abstract double calcularPrecio();
 
     public Libro getLibro() {
 
